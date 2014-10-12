@@ -74,8 +74,8 @@ implementation provided as supplementary material (Refs. 1-2).
 Author
 ------
 
-Codes except the XPP-AUT original are by T. Giorgino, 24-8-2012,
-ISIB-CNR .
+Conversions by T. Giorgino (ISIB-CNR), relying heavily on the XPP-AUT
+original. 24-8-2012.
 
 
 
