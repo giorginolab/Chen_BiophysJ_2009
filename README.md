@@ -80,7 +80,7 @@ Author
 ------
 
 Codes except the XPP-AUT original are by T. Giorgino, 24-8-2012,
-toni.giorgino@isib.cnr.it .
+ISIB-CNR .
 
 
 
@@ -137,7 +137,9 @@ File | Description
 
 From Antimony, these models are automatically generated:
 
-* Flat SBML (tested in COPASI 4.8, www.copasi.org, and RoadRunner/SBW Simulation Tool v1.4.4424.32048, sbw.sourceforge.net). See enclosed NOTES.txt file for details.
+* Flat SBML (tested in [COPASI](www.copasi.org) 4.8, [RoadRunner/SBW
+  Simulation Tool](sbw.sourceforge.net) v1.4.4424.32048, and 
+  others. See enclosed NOTES.txt file for details.
 
 * Modular SBML, according to the sbml-comp extension.
 
