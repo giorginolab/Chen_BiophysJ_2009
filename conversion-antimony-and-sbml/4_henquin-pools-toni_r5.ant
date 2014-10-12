@@ -1,0 +1,236 @@
+// Antimony conversion of Yi-der Chen et al, Identifying the Targets
+// of the Amplifying Pathway for Insulin Secretion in Pancreatic
+// b-Cells by Kinetic Modeling of Granule Exocytosis, Biophysical
+// Journal, Volume 95, 2226-2241, doi:10.1529/biophysj.107.124990,
+// based on the original XPP implementation available at
+// http://lbm.niddk.nih.gov/sherman/gallery/beta/Vesicle/*
+
+// Author of the conversion: 
+// Toni Giorgino, ISIB, National Research Council of Italy
+// toni.giorgino@isib.cnr.it  mer 11 lug 2012, 18.12.55, CEST
+
+// Extensively notes are also available on request.
+
+// See accompanying comments in the NOTES.txt file.
+
+
+
+// Calcium compartments:
+
+// Units:
+// time: sec
+// volume: l
+// conductance: pS
+// V: mV
+// I: fA
+// J: uM/s
+// alpha: umol/sec/fA
+
+
+
+// -------------------------------------------------------
+// AUXILIARY FUNCTIONS
+//
+// Heaviside function
+// Only required for a non-event based version of SquareSource.
+function heavx(x)
+    (abs(x)+x)/(2*abs(x)+1e-5)
+end
+
+// Modulus function (for noninteger, positive a,b).
+// MathML has the "rem()" function, which does not seem to be
+// supported by most integrators (also, possibly integer).
+function modulus(a,b)
+	a-b*floor(a/b)
+end
+
+
+
+// -------------------------------------------------------
+// MODEL OF A SQUARE-WAVE MEMBRANE POTENTIAL
+//
+
+// # set toff  > 100 for steady stimulus
+model SquareSource()
+  species V;
+
+  const PI=3.14159265359;
+  const Vrest=-70; 
+  const Vburst=-20;
+  const tstep=0.0; 
+  const ton=6.0; 
+  const toff=6.0;
+  const period=ton+toff;  
+  const phase_off=(ton/period)*2*PI;
+
+  // The following expression may replace events, but care must be
+  // exercised with respect to discontinuities.
+  // V := Vrest + (Vburst - Vrest)*(heavx(modx(time, tcycle)) - heavx(modx(time,tcycle) - toff));
+
+  phase := 2*PI*time/period;
+  
+  V=Vburst;
+  at (sin(phase)>0): V=Vburst;
+  at (sin(phase)<0): V=Vrest;
+end 
+
+
+// -------------------------------------------------------
+// MODEL OF MICRODOMAIN AND CYTOSOL CALCIUM COMPARTMENTS
+// COUPLED TO THE MEMBRANE
+
+
+// minf(v) is eq (5) of Chen's paper.
+function minf(V,Vm,sm)
+    1/(1 + exp((Vm-V)/sm))
+end
+
+model Calcium()
+      const ts=60;
+
+      var V, IL, IR, JL, JR;
+      var Jserca, Jpmca, Jncx, L;
+
+
+      // pumps and stores:
+      const Jsercamax=41.0;
+      const Kserca=0.27;
+      const Jpmcamax=21.0;
+      const Kpmca=0.5;
+      const Jncx0=18.67;
+      const Jleak=-0.94;
+
+      Jserca := Jsercamax*Ci^2/(Kserca^2 + Ci^2);
+      Jpmca  := Jpmcamax*Ci/(Kpmca + Ci);
+      Jncx   := Jncx0*(Ci - 0.25);
+      L := Jserca + Jpmca + Jncx + Jleak;
+
+      // "Import" membrane dynamics from the corresponding model
+      membranePotential: SquareSource();
+      membranePotential.V is V;
+
+      const gL=250;
+      const Vm=-20;
+      const sm=5;
+      const Vca=25;
+
+      IL := gL*minf(V,Vm,sm)*(V-Vca);
+      IR := 0.25*IL;
+
+      const alpha=5.18e-15;
+      const vcell=1.15e-12;
+      const vmd=4.2e-15;
+      const fv=vmd/vcell;
+
+      JL := alpha*IL/vmd;
+      JR := alpha*IR/vcell;
+
+
+	// Initial conditions: calcium
+      species Cmd=0.0674;
+      species Ci=0.06274;
+
+      const fi=0.01;
+      const fmd=0.01;
+      const B=200;
+
+      // Calcium derivatives
+      var dCmd; 
+	dCmd := ts*(-fmd*JL - fmd*B*(Cmd - Ci));
+      var Ci;
+	dCi := ts*(-fi*JR + fv*fi*B*(Cmd - Ci) - fi*L);
+
+      // Cmd' = ... should also work, but doesn't in RoadRunner
+      ->Cmd;  dCmd;
+      ->Ci;   dCi;
+
+end
+
+
+// -------------------------------------------------------
+// MODEL OF GRANULES AND SECRETION
+
+
+model Secretion()
+    const ts=60;
+
+    // "Import" calcium dynamics from the corresponding model
+    calcium: Calcium();
+    calcium.Cmd is Cmd;
+    calcium.Ci  is Ci;
+
+    // GlucFact = 1.2 for 3 G, 0 for 0 G, and Grest=0 for 0 G too
+    const GlucFact=0;
+
+    // The inter-compartment kinetic rates
+    const  k1=20;
+    const km1=100;
+    const r1=0.6;
+    const rm1=1;
+    const r20=0.006; 
+    const rm2=0.001;
+    const r30=1.205; 
+    const rm3=0.0001; 
+    const u1=2000; 
+    const u2=3; 
+    const u3=0.02;
+
+    const Kp=2.3; 
+    const Kp2=2.3;
+
+    // Initial states
+    N1=14.71376;
+    N2=0.612519;
+    N3=0.0084499;
+    N4=5.098857e-6;
+    N5=24.539936;
+    N6=218.017777;
+    NF=0.003399;
+    NR=0.50988575;
+    SE=0.0;
+
+
+    // The "calcium-gated" inter-compartment kinetic rates
+    var r2,r3;
+    r2 := r20*Ci/(Ci + Kp2);
+    r3 := GlucFact*r30*Ci/(Ci + Kp);
+
+    // Rates for docked granules depend on microdomain Ca++ (Cmd)
+    species N1, N2, N3, N4, N5, N6, NF, NR, SE;
+    -> N1 ; ts*(-(3*k1*Cmd + rm1)*N1 + km1*N2 + r1*N5);		// Primed
+    -> N2 ; ts*(3*k1*Cmd*N1 -(2*k1*Cmd + km1)*N2 + 2*km1*N3); 	// Bound
+    -> N3 ; ts*(2*k1*Cmd*N2 -(2*km1 + k1*Cmd)*N3 + 3*km1*N4); 	// Triggered
+    -> N4 ; ts*(k1*Cmd*N3 - (3*km1 + u1)*N4); 	   		// Fused
+    -> N5 ; ts*(rm1*N1 - (r1 + rm2)*N5 + r2*N6); 		// Primed
+    -> N6 ; ts*(r3 + rm2*N5 - (rm3 + r2)*N6); 			// Docked
+    -> NF ; ts*(u1*N4 - u2*NF);      				// Fused
+    -> NR ; ts*(u2*NF - u3*NR); 				// Releasing
+    -> SE ; ts*(u3*NR); 					// Secretion
+
+end
+
+
+
+// -------------------------------------------------------
+// AMOUNT OF SE OVER THE LAST 2 MINUTES
+
+// Trick to approximate the 2-min averaged secretion, without resorting to
+// the "delay()" function.  Trigger events every 2 time units and 
+// latch the current SE value.
+model ISR()
+	species SEdel;
+	species avISR;
+
+	SEdel=0;
+	avISR=0;
+
+	secretion: Secretion();
+	secretion.SE is SE;
+
+	//  4.5 is 9 pg/islet / 2 min
+	phase:=2*3.1415*(time/2);
+	at (sin(phase)>0), priority=1: avISR=4.5*(SE-SEdel);
+	at (sin(phase)>0), priority=0: SEdel=SE;
+
+end
+

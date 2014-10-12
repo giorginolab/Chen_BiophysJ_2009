@@ -1,0 +1,87 @@
+//Created by libAntimony v2.1-beta
+function minf(V, Vm, sm)
+  1/(1+exp((Vm-V)/sm));
+end
+
+function heavx(x)
+  (abs(x)+x)/(2*abs(x)+1e-005);
+end
+
+function modx(a, b)
+  a-b*floor(a/b);
+end
+
+model SquareSource()
+
+  // Compartments and Species:
+  species V;
+
+  // Assignment Rules:
+  V := Vrest+(Vburst-Vrest)*(heavx(modx(time,tcycle))-heavx(modx(time,tcycle)-toff));
+
+  // Variable initializations:
+  Vrest = -70;
+  Vburst = -20;
+  tstep = 0;
+  ton = 6;
+  toff = 6;
+  tcycle = 12;
+
+  //Other declarations:
+  const Vrest, Vburst, tstep, ton, toff, tcycle;
+end
+
+model Calcium()
+
+  // Sub-modules, and any changes to those submodules:
+  membranePotential: SquareSource();
+  membranePotential.V is V;
+
+  // Compartments and Species:
+  species Ci, Cmd;
+
+  // Assignment Rules:
+  IL := gL*minf(V,Vm,sm)*(V-Vca);
+  IR := 0.25*IL;
+  JL := alpha*IL/vmd;
+  JR := alpha*IR/vcell;
+  Jserca := Jsercamax*Ci^2/(Kserca^2+Ci^2);
+  Jpmca := Jpmcamax*Ci/(Kpmca+Ci);
+  Jncx := Jncx0*(Ci-0.25);
+  L := Jserca+Jpmca+Jncx+Jleak;
+  dCmd := ts*(-fmd*JL-fmd*B*(Cmd-Ci));
+  dCi := ts*(-fi*JR+fv*fi*B*(Cmd-Ci)-fi*L);
+
+  // Reactions:
+  _J0:  -> Cmd; dCmd;
+  _J1:  -> Ci; dCi;
+
+  // Species initializations:
+  Ci = 0.06274;
+  Cmd = 0.0674;
+
+  // Variable initializations:
+  ts = 60;
+  Jsercamax = 41;
+  Kserca = 0.27;
+  Jpmcamax = 21;
+  Kpmca = 0.5;
+  Jncx0 = 18.67;
+  Jleak = -0.94;
+  gL = 250;
+  Vm = -20;
+  sm = 5;
+  Vca = 25;
+  alpha = 5.18e-015;
+  vcell = 1.15e-012;
+  vmd = 4.2e-015;
+  fv = 0.0036522;
+  fi = 0.01;
+  fmd = 0.01;
+  B = 200;
+
+  //Other declarations:
+  var IL, IR, JL, JR, Jserca, Jpmca, Jncx, L, dCmd;
+  const ts, Jsercamax, Kserca, Jpmcamax, Kpmca, Jncx0, Jleak, gL, Vm, sm;
+  const Vca, alpha, vcell, vmd, fv, fi, fmd, B;
+end

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by libAntimony version v2.1-beta on 2012-07-11 18:48 with libSBML version 5.1.0-b0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="Calcium" name="Calcium">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="minf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> V </ci>
+            </bvar>
+            <bvar>
+              <ci> Vm </ci>
+            </bvar>
+            <bvar>
+              <ci> sm </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <cn type="integer"> 1 </cn>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> Vm </ci>
+                      <ci> V </ci>
+                    </apply>
+                    <ci> sm </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="heavx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> x </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <abs/>
+                  <ci> x </ci>
+                </apply>
+                <ci> x </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <apply>
+                    <abs/>
+                    <ci> x </ci>
+                  </apply>
+                </apply>
+                <cn type="e-notation"> 1 <sep/> -5 </cn>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="modx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> a </ci>
+            </bvar>
+            <bvar>
+              <ci> b </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <ci> a </ci>
+              <apply>
+                <times/>
+                <ci> b </ci>
+                <apply>
+                  <floor/>
+                  <apply>
+                    <divide/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfCompartments>
+      <compartment sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="V" compartment="default_compartment" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Ci" compartment="default_compartment" initialConcentration="0.06274" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Cmd" compartment="default_compartment" initialConcentration="0.0674" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="ts" value="60" constant="true"/>
+      <parameter id="IL" constant="false"/>
+      <parameter id="IR" constant="false"/>
+      <parameter id="JL" constant="false"/>
+      <parameter id="JR" constant="false"/>
+      <parameter id="Jserca" constant="false"/>
+      <parameter id="Jpmca" constant="false"/>
+      <parameter id="Jncx" constant="false"/>
+      <parameter id="L" constant="false"/>
+      <parameter id="Jsercamax" value="41" constant="true"/>
+      <parameter id="Kserca" value="0.27" constant="true"/>
+      <parameter id="Jpmcamax" value="21" constant="true"/>
+      <parameter id="Kpmca" value="0.5" constant="true"/>
+      <parameter id="Jncx0" value="18.67" constant="true"/>
+      <parameter id="Jleak" value="-0.94" constant="true"/>
+      <parameter id="membranePotential_Vrest" value="-70" constant="true"/>
+      <parameter id="membranePotential_Vburst" value="-20" constant="true"/>
+      <parameter id="membranePotential_tstep" value="0" constant="true"/>
+      <parameter id="membranePotential_ton" value="6" constant="true"/>
+      <parameter id="membranePotential_toff" value="6" constant="true"/>
+      <parameter id="membranePotential_tcycle" value="12" constant="true"/>
+      <parameter id="gL" value="250" constant="true"/>
+      <parameter id="Vm" value="-20" constant="true"/>
+      <parameter id="sm" value="5" constant="true"/>
+      <parameter id="Vca" value="25" constant="true"/>
+      <parameter id="alpha" value="5.18e-015" constant="true"/>
+      <parameter id="vcell" value="1.15e-012" constant="true"/>
+      <parameter id="vmd" value="4.2e-015" constant="true"/>
+      <parameter id="fv" value="0.0036522" constant="true"/>
+      <parameter id="fi" value="0.01" constant="true"/>
+      <parameter id="fmd" value="0.01" constant="true"/>
+      <parameter id="B" value="200" constant="true"/>
+      <parameter id="dCmd" constant="false"/>
+      <parameter id="dCi" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="V">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> membranePotential_Vrest </ci>
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <ci> membranePotential_Vburst </ci>
+                <ci> membranePotential_Vrest </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <ci> heavx </ci>
+                  <apply>
+                    <ci> modx </ci>
+                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                    <ci> membranePotential_tcycle </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <ci> heavx </ci>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <ci> modx </ci>
+                      <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                      <ci> membranePotential_tcycle </ci>
+                    </apply>
+                    <ci> membranePotential_toff </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="IL">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> gL </ci>
+            <apply>
+              <ci> minf </ci>
+              <ci> V </ci>
+              <ci> Vm </ci>
+              <ci> sm </ci>
+            </apply>
+            <apply>
+              <minus/>
+              <ci> V </ci>
+              <ci> Vca </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="IR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 0.25 </cn>
+            <ci> IL </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="JL">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> alpha </ci>
+              <ci> IL </ci>
+            </apply>
+            <ci> vmd </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="JR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> alpha </ci>
+              <ci> IR </ci>
+            </apply>
+            <ci> vcell </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Jserca">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> Jsercamax </ci>
+              <apply>
+                <power/>
+                <ci> Ci </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <power/>
+                <ci> Kserca </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <ci> Ci </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Jpmca">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> Jpmcamax </ci>
+              <ci> Ci </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Kpmca </ci>
+              <ci> Ci </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Jncx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> Jncx0 </ci>
+            <apply>
+              <minus/>
+              <ci> Ci </ci>
+              <cn> 0.25 </cn>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="L">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> Jserca </ci>
+            <ci> Jpmca </ci>
+            <ci> Jncx </ci>
+            <ci> Jleak </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="dCmd">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> ts </ci>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <apply>
+                  <minus/>
+                  <ci> fmd </ci>
+                </apply>
+                <ci> JL </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> fmd </ci>
+                <ci> B </ci>
+                <apply>
+                  <minus/>
+                  <ci> Cmd </ci>
+                  <ci> Ci </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="dCi">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> ts </ci>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <ci> fi </ci>
+                  </apply>
+                  <ci> JR </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> fv </ci>
+                  <ci> fi </ci>
+                  <ci> B </ci>
+                  <apply>
+                    <minus/>
+                    <ci> Cmd </ci>
+                    <ci> Ci </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> fi </ci>
+                <ci> L </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="_J0" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="Cmd" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> dCmd </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="_J1" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="Ci" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> dCi </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

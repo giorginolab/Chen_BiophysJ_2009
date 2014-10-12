@@ -1,0 +1,37 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML" overflow="scroll" altimg="si132.gif">
+  <mrow>
+    <msub>
+      <mi>r</mi>
+      <mn>3</mn>
+    </msub>
+    <mo>=</mo>
+    <msubsup>
+      <mi>r</mi>
+      <mn>3</mn>
+      <mn>0</mn>
+    </msubsup>
+    <msub>
+      <mi>C</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>/</mo>
+    <mo stretchy="false">[</mo>
+    <msub>
+      <mi>C</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>+</mo>
+    <msub>
+      <mi>K</mi>
+      <mtext>p</mtext>
+    </msub>
+    <mo stretchy="false">]</mo>
+    <mo>,</mo>
+  </mrow>
+</math>

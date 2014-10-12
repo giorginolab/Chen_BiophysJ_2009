@@ -1,0 +1,40 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML" overflow="scroll" altimg="si104.gif">
+  <mrow>
+    <mi>L</mi>
+    <mo stretchy="false">(</mo>
+    <msub>
+      <mi>C</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mo stretchy="false">)</mo>
+    <mo>=</mo>
+    <msub>
+      <mi>J</mi>
+      <mrow>
+        <mtext>SERCA</mtext>
+      </mrow>
+    </msub>
+    <mo>+</mo>
+    <msub>
+      <mi>J</mi>
+      <mrow>
+        <mtext>PMCA</mtext>
+      </mrow>
+    </msub>
+    <mo>+</mo>
+    <msub>
+      <mi>J</mi>
+      <mrow>
+        <mtext>NCX</mtext>
+      </mrow>
+    </msub>
+    <mo>+</mo>
+    <msub>
+      <mi>J</mi>
+      <mrow>
+        <mtext>leak</mtext>
+      </mrow>
+    </msub>
+    <mo>,</mo>
+  </mrow>
+</math>

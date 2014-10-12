@@ -1,0 +1,2 @@
+species S;
+S:=sin(2*3.14*time/10);

@@ -1,0 +1,13 @@
+//Created by libAntimony v2.1-beta
+function minf(V, Vm, sm)
+  1/(1+exp((Vm-V)/sm));
+end
+
+function heavx(x)
+  (abs(x)+x)/(2*abs(x)+1e-005);
+end
+
+function modx(a, b)
+  a-b*floor(a/b);
+end
+

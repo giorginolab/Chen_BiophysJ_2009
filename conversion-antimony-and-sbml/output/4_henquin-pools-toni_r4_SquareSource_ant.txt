@@ -1,0 +1,32 @@
+//Created by libAntimony v2.1-beta
+function minf(V, Vm, sm)
+  1/(1+exp((Vm-V)/sm));
+end
+
+function heavx(x)
+  (abs(x)+x)/(2*abs(x)+1e-005);
+end
+
+function modx(a, b)
+  a-b*floor(a/b);
+end
+
+model SquareSource()
+
+  // Compartments and Species:
+  species V;
+
+  // Assignment Rules:
+  V := Vrest+(Vburst-Vrest)*(heavx(modx(time,tcycle))-heavx(modx(time,tcycle)-toff));
+
+  // Variable initializations:
+  Vrest = -70;
+  Vburst = -20;
+  tstep = 0;
+  ton = 6;
+  toff = 6;
+  tcycle = 12;
+
+  //Other declarations:
+  const Vrest, Vburst, tstep, ton, toff, tcycle;
+end

@@ -1,0 +1,69 @@
+function dN = fcn(Cmd,Ci,N,pg)
+%#codegen
+
+% N is the granule populations.
+%  N(1) .. N(6) are N1..N6, NF, NR, SE
+
+    dN=zeros(9,1);
+
+    r2 = pg.r20*Ci/(Ci + pg.Kp2);
+    r3 = pg.GlucFact*pg.r30*Ci/(Ci + pg.Kp);
+
+        % shortcuts
+    N1=N(1); N2=N(2); N3=N(3); N4=N(4); N5=N(5); N6=N(6); 
+    NF=N(7); NR=N(8); 
+    
+        %shortcuts
+    k1=pg.k1;
+    km1=pg.km1;
+    r1=pg.r1;
+    rm1=pg.rm1;
+    rm2=pg.rm2;
+    rm3=pg.rm3; 
+    u1=pg.u1; 
+    u2=pg.u2; 
+    u3=pg.u3;
+
+    
+    dN(1) = pg.ts*(-(3*k1*Cmd + rm1)*N1 + km1*N2 + r1*N5);		% Primed
+    dN(2) = pg.ts*(3*k1*Cmd*N1 -(2*k1*Cmd + km1)*N2 + 2*km1*N3); 	% Bound
+    dN(3) = pg.ts*(2*k1*Cmd*N2 -(2*km1 + k1*Cmd)*N3 + 3*km1*N4); 	% Triggered
+    dN(4) = pg.ts*(k1*Cmd*N3 - (3*km1 + u1)*N4); 	   		% Fused
+    dN(5) = pg.ts*(rm1*N1 - (r1 + rm2)*N5 + r2*N6); 		% Primed
+    dN(6) = pg.ts*(r3 + rm2*N5 - (rm3 + r2)*N6); 			% Docked
+    dN(7) = pg.ts*(u1*N4 - u2*NF);      				% Fused
+    dN(8) = pg.ts*(u2*NF - u3*NR); 				% Releasing
+    dN(9) = pg.ts*(u3*NR); 					% Secretion
+
+
+
+end
+
+-----------------------------------------------
+
+
+function [dCmd, dCi] = fcn(V, Cmd, Ci, p_c)
+%#codegen
+
+    Jserca = p_c.Jsercamax*Ci^2/(p_c.Kserca^2 + Ci^2);
+    Jpmca  = p_c.Jpmcamax*Ci/(p_c.Kpmca + Ci);
+    Jncx   = p_c.Jncx0*(Ci - 0.25);
+    L = Jserca + Jpmca + Jncx + p_c.Jleak;
+
+    
+    IL = p_c.gL*minf(V,p_c.Vm,p_c.sm)*(V-p_c.Vca);
+    IR = 0.25*IL;
+
+    JL = p_c.alpha*IL/p_c.vmd;
+    JR = p_c.alpha*IR/p_c.vcell;
+
+    dCmd = p_c.ts*(-p_c.fmd*JL - p_c.fmd*p_c.B*(Cmd - Ci));
+    dCi =  p_c.ts*(-p_c.fi*JR  + p_c.fv*p_c.fi*p_c.B*(Cmd - Ci) - p_c.fi*L);
+
+end      
+    
+function out=minf(V,Vm,sm)
+%#codegen
+    out=    1/(1 + exp((Vm-V)/sm));
+end    
+    

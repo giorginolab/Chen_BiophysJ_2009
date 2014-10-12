@@ -1,0 +1,49 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML" overflow="scroll" altimg="si99.gif">
+  <mrow>
+    <msub>
+      <mi>m</mi>
+      <mo>&#x221E;</mo>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>V</mi>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo stretchy="false">)</mo>
+    <mo>=</mo>
+    <msup>
+      <mrow>
+        <mo stretchy="false">[</mo>
+        <mn>1</mn>
+        <mo>+</mo>
+        <msup>
+          <mi>e</mi>
+          <mrow>
+            <mo stretchy="false">(</mo>
+            <msub>
+              <mi>V</mi>
+              <mtext>m</mtext>
+            </msub>
+            <mo>&#x2212;</mo>
+            <mi>V</mi>
+            <mo stretchy="false">(</mo>
+            <mi>t</mi>
+            <mo stretchy="false">)</mo>
+            <mo stretchy="false">)</mo>
+            <mo>/</mo>
+            <msub>
+              <mi>s</mi>
+              <mtext>m</mtext>
+            </msub>
+          </mrow>
+        </msup>
+        <mo stretchy="false">]</mo>
+      </mrow>
+      <mrow>
+        <mo>&#x2212;</mo>
+        <mn>1</mn>
+      </mrow>
+    </msup>
+    <mtext>,</mtext>
+  </mrow>
+</math>

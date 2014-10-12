@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by libAntimony version v2.2 on 2012-10-25 11:46 with libSBML version 5.6.0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="ISR" name="ISR">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="heavx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> x </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <abs/>
+                  <ci> x </ci>
+                </apply>
+                <ci> x </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <apply>
+                    <abs/>
+                    <ci> x </ci>
+                  </apply>
+                </apply>
+                <cn type="e-notation"> 1 <sep/> -5 </cn>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="modulus">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> a </ci>
+            </bvar>
+            <bvar>
+              <ci> b </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <ci> a </ci>
+              <apply>
+                <times/>
+                <ci> b </ci>
+                <apply>
+                  <floor/>
+                  <apply>
+                    <divide/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="minf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> V </ci>
+            </bvar>
+            <bvar>
+              <ci> Vm </ci>
+            </bvar>
+            <bvar>
+              <ci> sm </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <cn type="integer"> 1 </cn>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> Vm </ci>
+                      <ci> V </ci>
+                    </apply>
+                    <ci> sm </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfCompartments>
+      <compartment sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="SEdel" compartment="default_compartment" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="avISR" compartment="default_compartment" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_calcium_V" compartment="default_compartment" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_Ci" compartment="default_compartment" initialConcentration="0.06274" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_Cmd" compartment="default_compartment" initialConcentration="0.0674" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_N1" compartment="default_compartment" initialConcentration="14.71376" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_N2" compartment="default_compartment" initialConcentration="0.612519" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_N3" compartment="default_compartment" initialConcentration="0.0084499" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_N4" compartment="default_compartment" initialConcentration="5.098857e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_N5" compartment="default_compartment" initialConcentration="24.539936" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_N6" compartment="default_compartment" initialConcentration="218.017777" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_NF" compartment="default_compartment" initialConcentration="0.003399" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="secretion_NR" compartment="default_compartment" initialConcentration="0.50988575" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="SE" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="secretion_ts" value="60" constant="true"/>
+      <parameter id="secretion_calcium_ts" value="60" constant="true"/>
+      <parameter id="secretion_calcium_IL" constant="false"/>
+      <parameter id="secretion_calcium_IR" constant="false"/>
+      <parameter id="secretion_calcium_JL" constant="false"/>
+      <parameter id="secretion_calcium_JR" constant="false"/>
+      <parameter id="secretion_calcium_Jserca" constant="false"/>
+      <parameter id="secretion_calcium_Jpmca" constant="false"/>
+      <parameter id="secretion_calcium_Jncx" constant="false"/>
+      <parameter id="secretion_calcium_L" constant="false"/>
+      <parameter id="secretion_calcium_Jsercamax" value="41" constant="true"/>
+      <parameter id="secretion_calcium_Kserca" value="0.27" constant="true"/>
+      <parameter id="secretion_calcium_Jpmcamax" value="21" constant="true"/>
+      <parameter id="secretion_calcium_Kpmca" value="0.5" constant="true"/>
+      <parameter id="secretion_calcium_Jncx0" value="18.67" constant="true"/>
+      <parameter id="secretion_calcium_Jleak" value="-0.94" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_PI" value="3.14159265359" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_Vrest" value="-70" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_Vburst" value="-20" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_tstep" value="0" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_ton" value="6" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_toff" value="6" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_period" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_phase_off" constant="true"/>
+      <parameter id="secretion_calcium_membranePotential_phase" constant="false"/>
+      <parameter id="secretion_calcium_gL" value="250" constant="true"/>
+      <parameter id="secretion_calcium_Vm" value="-20" constant="true"/>
+      <parameter id="secretion_calcium_sm" value="5" constant="true"/>
+      <parameter id="secretion_calcium_Vca" value="25" constant="true"/>
+      <parameter id="secretion_calcium_alpha" value="5.18e-15" constant="true"/>
+      <parameter id="secretion_calcium_vcell" value="1.15e-12" constant="true"/>
+      <parameter id="secretion_calcium_vmd" value="4.2e-15" constant="true"/>
+      <parameter id="secretion_calcium_fv" constant="true"/>
+      <parameter id="secretion_calcium_fi" value="0.01" constant="true"/>
+      <parameter id="secretion_calcium_fmd" value="0.01" constant="true"/>
+      <parameter id="secretion_calcium_B" value="200" constant="true"/>
+      <parameter id="secretion_calcium_dCmd" constant="false"/>
+      <parameter id="secretion_calcium_dCi" constant="false"/>
+      <parameter id="secretion_GlucFact" value="0" constant="true"/>
+      <parameter id="secretion_k1" value="20" constant="true"/>
+      <parameter id="secretion_km1" value="100" constant="true"/>
+      <parameter id="secretion_r1" value="0.6" constant="true"/>
+      <parameter id="secretion_rm1" value="1" constant="true"/>
+      <parameter id="secretion_r20" value="0.006" constant="true"/>
+      <parameter id="secretion_rm2" value="0.001" constant="true"/>
+      <parameter id="secretion_r30" value="1.205" constant="true"/>
+      <parameter id="secretion_rm3" value="0.0001" constant="true"/>
+      <parameter id="secretion_u1" value="2000" constant="true"/>
+      <parameter id="secretion_u2" value="3" constant="true"/>
+      <parameter id="secretion_u3" value="0.02" constant="true"/>
+      <parameter id="secretion_Kp" value="2.3" constant="true"/>
+      <parameter id="secretion_Kp2" value="2.3" constant="true"/>
+      <parameter id="secretion_r2" constant="false"/>
+      <parameter id="secretion_r3" constant="false"/>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="secretion_calcium_V">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> secretion_calcium_membranePotential_Vburst </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="secretion_calcium_membranePotential_period">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> secretion_calcium_membranePotential_ton </ci>
+            <ci> secretion_calcium_membranePotential_toff </ci>
+          </apply>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="secretion_calcium_membranePotential_phase_off">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <ci> secretion_calcium_membranePotential_ton </ci>
+              <ci> secretion_calcium_membranePotential_period </ci>
+            </apply>
+            <cn type="integer"> 2 </cn>
+            <ci> secretion_calcium_membranePotential_PI </ci>
+          </apply>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="secretion_calcium_fv">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> secretion_calcium_vmd </ci>
+            <ci> secretion_calcium_vcell </ci>
+          </apply>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfRules>
+      <assignmentRule variable="SEdel">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/delay"> delay </csymbol>
+            <ci> SE </ci>
+            <cn> 2.01 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="avISR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 4.5 </cn>
+            <apply>
+              <minus/>
+              <ci> SE </ci>
+              <ci> SEdel </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_IL">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> secretion_calcium_gL </ci>
+            <apply>
+              <ci> minf </ci>
+              <ci> secretion_calcium_V </ci>
+              <ci> secretion_calcium_Vm </ci>
+              <ci> secretion_calcium_sm </ci>
+            </apply>
+            <apply>
+              <minus/>
+              <ci> secretion_calcium_V </ci>
+              <ci> secretion_calcium_Vca </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_IR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 0.25 </cn>
+            <ci> secretion_calcium_IL </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_JL">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> secretion_calcium_alpha </ci>
+              <ci> secretion_calcium_IL </ci>
+            </apply>
+            <ci> secretion_calcium_vmd </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_JR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> secretion_calcium_alpha </ci>
+              <ci> secretion_calcium_IR </ci>
+            </apply>
+            <ci> secretion_calcium_vcell </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_Jserca">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> secretion_calcium_Jsercamax </ci>
+              <apply>
+                <power/>
+                <ci> secretion_Ci </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <power/>
+                <ci> secretion_calcium_Kserca </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <ci> secretion_Ci </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_Jpmca">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> secretion_calcium_Jpmcamax </ci>
+              <ci> secretion_Ci </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> secretion_calcium_Kpmca </ci>
+              <ci> secretion_Ci </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_Jncx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> secretion_calcium_Jncx0 </ci>
+            <apply>
+              <minus/>
+              <ci> secretion_Ci </ci>
+              <cn> 0.25 </cn>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_L">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> secretion_calcium_Jserca </ci>
+            <ci> secretion_calcium_Jpmca </ci>
+            <ci> secretion_calcium_Jncx </ci>
+            <ci> secretion_calcium_Jleak </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_membranePotential_phase">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <cn type="integer"> 2 </cn>
+              <ci> secretion_calcium_membranePotential_PI </ci>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+            </apply>
+            <ci> secretion_calcium_membranePotential_period </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_dCmd">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> secretion_calcium_ts </ci>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <apply>
+                  <minus/>
+                  <ci> secretion_calcium_fmd </ci>
+                </apply>
+                <ci> secretion_calcium_JL </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> secretion_calcium_fmd </ci>
+                <ci> secretion_calcium_B </ci>
+                <apply>
+                  <minus/>
+                  <ci> secretion_Cmd </ci>
+                  <ci> secretion_Ci </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_calcium_dCi">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> secretion_calcium_ts </ci>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <ci> secretion_calcium_fi </ci>
+                  </apply>
+                  <ci> secretion_calcium_JR </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> secretion_calcium_fv </ci>
+                  <ci> secretion_calcium_fi </ci>
+                  <ci> secretion_calcium_B </ci>
+                  <apply>
+                    <minus/>
+                    <ci> secretion_Cmd </ci>
+                    <ci> secretion_Ci </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> secretion_calcium_fi </ci>
+                <ci> secretion_calcium_L </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_r2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> secretion_r20 </ci>
+              <ci> secretion_Ci </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> secretion_Ci </ci>
+              <ci> secretion_Kp2 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="secretion_r3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> secretion_GlucFact </ci>
+              <ci> secretion_r30 </ci>
+              <ci> secretion_Ci </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> secretion_Ci </ci>
+              <ci> secretion_Kp </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="secretion_calcium__J0" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_Cmd" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> secretion_calcium_dCmd </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion_calcium__J1" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_Ci" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> secretion_calcium_dCi </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J0" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_N1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_N5"/>
+          <modifierSpeciesReference species="secretion_Cmd"/>
+          <modifierSpeciesReference species="secretion_N2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <times/>
+                        <cn type="integer"> 3 </cn>
+                        <ci> secretion_k1 </ci>
+                        <ci> secretion_Cmd </ci>
+                      </apply>
+                      <ci> secretion_rm1 </ci>
+                    </apply>
+                  </apply>
+                  <ci> secretion_N1 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> secretion_km1 </ci>
+                  <ci> secretion_N2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> secretion_r1 </ci>
+                  <ci> secretion_N5 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J1" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_N2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_Cmd"/>
+          <modifierSpeciesReference species="secretion_N1"/>
+          <modifierSpeciesReference species="secretion_N3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <cn type="integer"> 3 </cn>
+                    <ci> secretion_k1 </ci>
+                    <ci> secretion_Cmd </ci>
+                    <ci> secretion_N1 </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <times/>
+                        <cn type="integer"> 2 </cn>
+                        <ci> secretion_k1 </ci>
+                        <ci> secretion_Cmd </ci>
+                      </apply>
+                      <ci> secretion_km1 </ci>
+                    </apply>
+                    <ci> secretion_N2 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <ci> secretion_km1 </ci>
+                  <ci> secretion_N3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J2" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_N3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_N4"/>
+          <modifierSpeciesReference species="secretion_Cmd"/>
+          <modifierSpeciesReference species="secretion_N2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <cn type="integer"> 2 </cn>
+                    <ci> secretion_k1 </ci>
+                    <ci> secretion_Cmd </ci>
+                    <ci> secretion_N2 </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <times/>
+                        <cn type="integer"> 2 </cn>
+                        <ci> secretion_km1 </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> secretion_k1 </ci>
+                        <ci> secretion_Cmd </ci>
+                      </apply>
+                    </apply>
+                    <ci> secretion_N3 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 3 </cn>
+                  <ci> secretion_km1 </ci>
+                  <ci> secretion_N4 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J3" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_N4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_Cmd"/>
+          <modifierSpeciesReference species="secretion_N3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> secretion_k1 </ci>
+                  <ci> secretion_Cmd </ci>
+                  <ci> secretion_N3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> secretion_km1 </ci>
+                    </apply>
+                    <ci> secretion_u1 </ci>
+                  </apply>
+                  <ci> secretion_N4 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J4" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_N5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_N6"/>
+          <modifierSpeciesReference species="secretion_N1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> secretion_rm1 </ci>
+                    <ci> secretion_N1 </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <plus/>
+                      <ci> secretion_r1 </ci>
+                      <ci> secretion_rm2 </ci>
+                    </apply>
+                    <ci> secretion_N5 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> secretion_r2 </ci>
+                  <ci> secretion_N6 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J5" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_N6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_N5"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <ci> secretion_r3 </ci>
+                  <apply>
+                    <times/>
+                    <ci> secretion_rm2 </ci>
+                    <ci> secretion_N5 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <ci> secretion_rm3 </ci>
+                    <ci> secretion_r2 </ci>
+                  </apply>
+                  <ci> secretion_N6 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J6" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_NF" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_N4"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> secretion_u1 </ci>
+                  <ci> secretion_N4 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> secretion_u2 </ci>
+                  <ci> secretion_NF </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J7" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="secretion_NR" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_NF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> secretion_u2 </ci>
+                  <ci> secretion_NF </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> secretion_u3 </ci>
+                  <ci> secretion_NR </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="secretion__J8" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference species="SE" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="secretion_NR"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> secretion_ts </ci>
+              <ci> secretion_u3 </ci>
+              <ci> secretion_NR </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event id="secretion_calcium_membranePotential__E0" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <apply>
+                <sin/>
+                <ci> secretion_calcium_membranePotential_phase </ci>
+              </apply>
+              <cn type="integer"> 0 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="secretion_calcium_V">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <ci> secretion_calcium_membranePotential_Vburst </ci>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="secretion_calcium_membranePotential__E1" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <lt/>
+              <apply>
+                <sin/>
+                <ci> secretion_calcium_membranePotential_phase </ci>
+              </apply>
+              <cn type="integer"> 0 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="secretion_calcium_V">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <ci> secretion_calcium_membranePotential_Vrest </ci>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

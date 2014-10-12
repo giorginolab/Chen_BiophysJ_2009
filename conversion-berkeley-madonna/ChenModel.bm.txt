@@ -1,0 +1,155 @@
+{  Direct transposition of Chen-Wang-Sherman's model of Insulin Secretion
+   from XPP-AUT to Berkeley Madonna syntax.  Tested with Madonna v. 9.0.74, 
+   JEngine 1.8, JRE 1.6.0.
+
+   Chen Y, Wang S, Sherman A. Identifying the Targets of the
+   Amplifying Pathway for Insulin Secretion in Pancreatic β-Cells by
+   Kinetic Modeling of Granule Exocytosis. Biophysical Journal. 2008
+   Set 1;95(5):2226–41. 10.1529/biophysj.107.124990
+   http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2517041/
+
+   Original provided as supplementary material for the above (online)
+   “Beta Cell Exocytosis Model”,
+   http://mrb.niddk.nih.gov/sherman/gallery/beta/Vesicle/henquin-pools.ode
+
+   toni.giorgino@isib.cnr.it
+   mer 17 ott 2012, 22.15.08, CEST
+
+   Note 1. Using the STIFF solver and tolerances set below is important.
+   Note 2. This file is not directly loadable in BM. It should be copied
+   	   and pasted in the Equations panel instead.
+}
+
+
+STARTTIME=0
+STOPTIME=50
+DT=0.001
+METHOD STIFF
+DTMAX=0.1
+TOLERANCE=0.001
+
+
+; V protocol:
+
+Vrest=-70
+Vburst=-20
+tstep=0.0
+ton=6.0
+toff=6.0
+tcycle=ton+toff
+
+V=IF MOD(time,tcycle)>=ton THEN Vrest ELSE Vburst
+
+; set toff  > 100 for steady stimulus
+; set ton=toff=8/60 for Figure 2
+
+
+; GlucFact = 1.2 for 3 G, 0 for 0 G, and Grest=0 for 0 G too
+GlucFact=0
+
+
+; Convert rates to minutes
+ts=60	  
+
+fmd=0.01
+fi=0.01
+B=200
+fv=0.00365
+alpha=5.18e-15
+vmd=4.2e-15
+vcell=1.15e-12
+gL=250
+Vm=-20
+Vca=25
+sm=5
+
+minf = 1/(1 + exp((Vm-V)/sm))
+
+; TG: The last two lines are for  V-gated channel. minf(v) is eq (5)
+; TG: eq (4)
+
+IL=gL*minf*(V-Vca)
+IR=0.25*IL
+
+; Molar fluxes:
+; TG: eq (3). Fluxes (ions) per mole
+JL = alpha*IL/vmd
+JR = alpha*IR/vcell
+
+; pumps and stores:
+; TG: eq (6). Probably rewritten to avoid null denominators
+
+Jsercamax=41.0
+Kserca=0.27
+Jpmcamax=21.0
+Kpmca=0.5
+Jleak=-0.94
+Jncx0=18.67
+Jserca = Jsercamax*Ci^2/(Kserca^2 + Ci^2)
+Jpmca = Jpmcamax*Ci/(Kpmca + Ci)
+Jncx = Jncx0*(Ci - 0.25)
+
+; TG: clearance from cytosol
+L=Jserca + Jpmca + Jncx + Jleak
+
+INIT Cmd=0.0674
+INIT Ci=0.06274
+
+
+; TG: JL and JR are the opposite sign wrt the paper
+
+Cmd' = ts*(-fmd*JL - fmd*B*(Cmd - Ci))
+ci' = ts*(-fi*JR + fv*fi*B*(Cmd - Ci) - fi*L)
+
+
+
+; Vesicles:
+
+INIT N1=14.71376
+INIT N2=0.612519
+INIT N3=0.0084499
+INIT N4=5.098857e-6
+INIT N5=24.539936
+INIT N6=218.017777
+INIT NF=0.003399
+INIT NR=0.50988575
+INIT SE=0.0
+
+k1=20
+km1=100
+r1=0.6
+rm1=1
+r20=0.006
+rm2=0.001
+r30=1.205
+rm3=0.0001
+u1=2000
+u2=3
+u3=0.02
+Kp=2.3
+Kp2=2.3
+
+; TG (11)
+r2 = r20*Ci/(Ci + Kp2)
+r3 = GlucFact*r30*Ci/(Ci + Kp)
+
+; TG (8)
+N1' = ts*(-(3*k1*Cmd + rm1)*N1 + km1*N2 + r1*N5)
+N2' = ts*(3*k1*Cmd*N1 -(2*k1*Cmd + km1)*N2 + 2*km1*N3)
+N3' = ts*(2*k1*Cmd*N2 -(2*km1 + k1*Cmd)*N3 + 3*km1*N4)
+N4' = ts*(k1*Cmd*N3 - (3*km1 + u1)*N4)
+N5' = ts*(rm1*N1 - (r1 + rm2)*N5 + r2*N6)
+N6' = ts*(r3 + rm2*N5 - (rm3 + r2)*N6)
+NF' = ts*(u1*N4 - u2*NF)
+NR' = ts*(u2*NF - u3*NR)
+
+; TG (10b)
+; samples collected every 2 minutes
+tau=2.0
+SE' = ts*(u3*NR)
+measured=4.5*(SE - delay(SE, tau))
+
+
+
+
+

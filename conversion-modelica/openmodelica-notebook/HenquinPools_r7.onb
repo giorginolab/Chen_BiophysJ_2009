@@ -1,0 +1,393 @@
+<!DOCTYPE OMNotebook>
+<Notebook>
+  <GroupCell closed="false">
+    <TextCell style="Title">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:10px; margin-bottom:10px; margin-left:10px; margin-right:10px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Arial'; font-size:38pt; font-weight:600; color:#000000;">Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic β-Cells by Kinetic Modeling of Granule Exocytosis&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <TextCell style="Author">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Arial'; font-size:14pt; font-style:italic; color:#000000;">Yi-der Chen, Shaokun Wang, and Arthur Sherman, doi:10.1529/biophysj.107.124990&lt;/span>&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Arial'; font-size:14pt; font-style:italic; color:#000000;">Test conversion of the original model into Modelica: toni.giorgino@upf.edu&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <TextCell style="Author">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">This is a conversion from the original model in XPP (ode) format. To execute the model, presss &lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; font-style:italic; color:#000000;">shift-enter &lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">on all of the blue cells. &lt;/span>&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Times New Roman'; font-size:12pt; color:#000000;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">The model assumes the following units.&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="true">
+      <Input>// # Units:
+// # time: sec
+// # volume: l
+// # conductance: pS
+// # V: mV
+// # I: fA
+// # J: uM/s
+// # alpha: umol/sec/fA
+</Input>
+      <Output></Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">The following block defines the Heaviside auxiliary function (used for square-pulse generation).&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <Input>// The heaviside function, for convenience
+function heav "Heaviside function"
+  input Real x;
+  output Real y;
+algorithm
+  y := 0.5 * (1+sign(x));
+end heav;</Input>
+      <Output>{heav}</Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">The voltage-gated switching function. It is a function of V, which returns the fraction of open channels.&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <Input>// minf(v) = 1/(1 + exp((Vm-V)/sm))
+function minf "Voltage-gate switching function"
+  input Real V;
+  input Real Vm:=-20, Sm:=5;
+  output Real o;
+algorithm
+  o := 1/(1 + exp((Vm-V)/Sm)); 
+end minf;</Input>
+      <Output>{minf}</Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">Model of a square-wave source. This is used to represent the (forced) external membrane potential. Parameters (voltages, period and duty-cycle) can be changed when the block is instantiated.&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <Input>// Square output: Vburst mV for ton ms, then Vrest mV for toff ms, then repeat
+model SquareSource "Forcing function for the membrane potential"
+  Real V,t;
+  parameter Real Vrest=-70, Vburst=-20;
+  parameter Real tstep=0.0, ton=6.0, toff=6.0;
+  // # set toff  > 100 for steady stimulus
+  parameter Real tcycle=ton+toff;
+equation
+  t = time;
+  V = Vrest + (Vburst - Vrest)*(heav(mod(t, tcycle)) - heav(mod(t,tcycle) - toff));
+end SquareSource;</Input>
+      <Output>{SquareSource}</Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Times New Roman'; font-size:12pt; color:#000000;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">This model contains the two calcium compartments. It uses a membrane potential (modeled by  the SquareSource defined above). The useful outputs are Ci and Cmd, i.e. the concentrations of Calcium in the cytosol and microdomains respectively.&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <Input>model CalciumCompartments "Calcium microdomain compartment"
+
+  parameter Real ts=60; // Conversion to minutes
+
+  // Parameter names mirror the original model 
+  parameter Real fmd=0.01, fi=0.01, B=200, fv=0.00365; 
+  parameter Real alpha=5.18e-15, vmd=4.2e-15, vcell=1.15e-12;
+  parameter Real gL=250, Vm=-20, Vca=25, sm=5;
+
+  Real V; // The current voltage (as generated by SquareSource)
+  Real IL, IR; // Currents
+  Real JL, JR; // Ion fluxes
+
+  // Leak fluxes
+  parameter Real Jsercamax=41.0, Kserca=0.27, Jpmcamax=21.0, Kpmca=0.5, Jleak=-0.94, Jncx0=18.67;
+  Real L, Jserca, Jpmca, Jncx;
+
+  // Ca++ concentrations, with initial values
+  Real Cmd(start=0.0674);
+  Real Ci(start=0.06274);
+    
+equation
+   
+  // The leak currents follow different kinetic laws
+  Jserca = Jsercamax*Ci^2/(Kserca^2 + Ci^2);
+  Jpmca = Jpmcamax*Ci/(Kpmca + Ci);
+  Jncx = Jncx0*(Ci - 0.25);
+  L=Jserca + Jpmca + Jncx + Jleak;
+
+  // # Rates are in seconds, following Yi-der,  I multiply ODE RHS's by ts to get in minutes
+  // Currents passing through the voltage-switched channels
+  IL=gL*minf(V)*(V- Vca);
+  IR=0.25*IL;
+  
+  // # Molar fluxes:
+  JL = alpha*IL/vmd;
+  JR = alpha*IR/vcell;
+
+  // Compartment model
+  der(Cmd) = ts*(-fmd*JL - fmd*B*(Cmd - Ci));
+  der(Ci)  = ts*(-fi*JR + fv*fi*B*(Cmd - Ci) - fi*L);
+
+end CalciumCompartments;
+</Input>
+      <Output>{CalciumCompartments}</Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">Model of the β-cell. It contains the calcium compartments (an instance of CalciumCompartments) and the vesicles (defined here).&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <Input>
+model BetaCell "Calcium-vesicle combined model, Chen et al."
+  parameter Real ts=60; // Minutes
+
+  // # GlucFact = 1.2 for 3 G, 0 for 0 G, and Grest=0 for 0 G too
+  Real GlucFact=1.2;
+
+  // These come out from CA. Defined as local veriables for brevity.
+  Real Ci, Cmd;  
+  Real r2, r3;  
+
+  // # Vesicles: initial conditions
+  Real N1(start=14.71376);
+  Real N2(start=0.612519);
+  Real N3(start=0.0084499);
+  Real N4(start=5.098857e-6);
+  Real N5(start=24.539936);
+  Real N6(start=218.017777);
+  Real NF(start=0.003399);
+  Real NR(start=0.50988575);
+  Real SE(start=0.0);
+
+  // The inter-compartment kinetic rates
+  parameter Real k1=20, km1=100, r1=0.6, rm1=1, r20=0.006, rm2=0.001;
+  parameter Real r30=1.205, rm3=0.0001, u1=2000, u2=3, u3=0.02;
+  parameter Real Kp=2.3, Kp2=2.3;
+  
+equation
+  // Rates depending on cytosol calcium
+  r2 = r20*Ci/(Ci + Kp2);
+  r3 = GlucFact*r30*Ci/(Ci + Kp);
+  
+  // Rates depending on microdomain calcium, and secretion; (8)
+  der(N1) = ts*(-(3*k1*Cmd + rm1)*N1 + km1*N2 + r1*N5); // Primed
+  der(N2) = ts*(3*k1*Cmd*N1 -(2*k1*Cmd + km1)*N2 + 2*km1*N3); // Bound
+  der(N3) = ts*(2*k1*Cmd*N2 -(2*km1 + k1*Cmd)*N3 + 3*km1*N4); // Triggered
+  der(N4) = ts*(k1*Cmd*N3 - (3*km1 + u1)*N4); // Fused
+  der(N5) = ts*(rm1*N1 - (r1 + rm2)*N5 + r2*N6); //Primed
+  der(N6) = ts*(r3 + rm2*N5 - (rm3 + r2)*N6); // Docked
+  der(NF) = ts*(u1*N4 - u2*NF); // Fused
+  der(NR) = ts*(u2*NF - u3*NR); // Releasing
+  der(SE) = ts*(u3*NR); // Secretion
+
+end BetaCell;
+</Input>
+      <Output>{BetaCell}</Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">The final model instantiates a BetaCell and performs the time-averaged ISR measurement.&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <Input>model ISRMeasurement
+  SquareSource membranePotential(ton=6,toff=6);
+  CalciumCompartments CA;
+  BetaCell Cell(GlucFact=0);
+  Real SE;                  // Shorthand of SE compartment in BetaCell
+  parameter Real tau=2.0;   // # samples collected every 2 minutes
+  output Real measured;
+equation
+  CA.V=membranePotential.V;
+  Cell.Ci=CA.Ci;
+  Cell.Cmd=CA.Cmd;
+  SE=Cell.SE;
+  measured=4.5*(SE - delay(SE, tau));
+end ISRMeasurement;
+</Input>
+      <Output>{ISRMeasurement}</Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">The line below performs the simulation&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <Input>simulate(ISRMeasurement, startTime=0, stopTime=60,numberOfIntervals=500);</Input>
+      <Output>[done]</Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">This reproduces Figure 4 &lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; font-weight:600; color:#000000;">G0&lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">. To make &lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; font-weight:600; color:#000000;">G3&lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">, set &lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; font-style:italic; color:#000000;">GlucFact&lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">=1.2 .&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <OMCPlot PlotType="0" XRangeMin="0" Title="Plot by OpenModelica" LogX="false" XRangeMax="0" Grid="true" LogY="false" YRangeMin="0" YRangeMax="0" YLabel="" Legend="true" XLabel="time">
+        <Curve Title="CA.V" Visible="true" XData="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" YData="wEaAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwEaAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADANAAAAAAAAMA0AAAAAAAAwDQAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwFGAAAAAAADAUYAAAAAAAMBRgAAAAAAAwEaAAAAAAADARoAAAAAAAA==" Color="4294901760"/>
+        <Curve Title="Cell.N1" Visible="true" XData="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" YData="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" Color="4278190335"/>
+        <Curve Title="measured" Visible="true" XData="AAAAAAAAAAA/vrhR64UeuD/OuFHrhR64P9cKPXCj1wo/3rhR64UeuD/jMzMzMzMzP+cKPXCj1wo/6uFHrhR64T/uuFHrhR64P/FHrhR64Ug/8zMzMzMzND/1HrhR64UgP/cKPXCj1ww/+PXCj1wo+D/64UeuFHrkP/zMzMzMzNA//rhR64UevEAAUeuFHrhUQAFHrhR64UpAAj1wo9cKQEADMzMzMzM2QAQo9cKPXCxABR64UeuFIkAGFHrhR64YQAcKPXCj1w5ACAAAAAAABEAI9cKPXCj6QAnrhR64UfBACuFHrhR65kAL1wo9cKPcQAzMzMzMzNJADcKPXCj1yEAOuFHrhR6+QA+uFHrhR7RAEFHrhR64VUAQzMzMzMzQQBFHrhR64UtAEcKPXCj1xkASPXCj1wpBQBK4UeuFHrxAEzMzMzMzN0ATrhR64UeyQBQo9cKPXC1AFKPXCj1wqEAVHrhR64UjQBWZmZmZmZ5AFhR64UeuGUAWj1wo9cKUQBcKPXCj1w9AF4UeuFHrikAYAAAAAAAFQBh64UeuFIBAGPXCj1wo+0AZcKPXCj12QBnrhR64UfFAGmZmZmZmbEAa4UeuFHrnQBtcKPXCj2JAG9cKPXCj3UAcUeuFHrhYQBzMzMzMzNNAHUeuFHrhTkAdwo9cKPXJQB49cKPXCkRAHrhR64Uev0AfMzMzMzM6QB+uFHrhR7VAIBR64UeuGEAgUeuFHrhVQCCPXCj1wpJAIMzMzMzMz0AhCj1wo9cMQCFHrhR64UlAIYUeuFHrhkAhwo9cKPXDQCIAAAAAAABAIj1wo9cKPUAieuFHrhR6QCK4UeuFHrdAIvXCj1wo9EAjMzMzMzMxQCNwo9cKPW5AI64UeuFHq0Aj64UeuFHoQCQo9cKPXCVAJGZmZmZmYkAko9cKPXCfQCThR64UetxAJR64UeuFGUAlXCj1wo9WQCWZmZmZmZNAJdcKPXCj0EAmFHrhR64NQCZR64UeuEpAJo9cKPXCh0AmzMzMzMzEQCcKPXCj1wFAJ0euFHrhPkAnhR64Uet7QCfCj1wo9bhAJ///////9UAoPXCj1woyQCh64UeuFG9AKLhR64UerEAo9cKPXCjpQCkzMzMzMyZAKXCj1wo9Y0AprhR64UegQCnrhR64Ud1AKij1wo9cGkAqZmZmZmZXQCqj1wo9cJRAKuFHrhR60UArHrhR64UOQCtcKPXCj0tAK5mZmZmZiEAr1wo9cKPFQCwUeuFHrgJALFHrhR64P0Asj1wo9cJ8QCzMzMzMzLlALQo9cKPW9kAtR64UeuEzQC2FHrhR63BALcKPXCj1rUAt///////qQC49cKPXCidALnrhR64UZEAuuFHrhR6hQC71wo9cKN5ALzMzMzMzG0AvcKPXCj1YQC+uFHrhR5VAL+uFHrhR0kAwFHrhR64IQDAzMzMzMydAMFHrhR64RkAwcKPXCj1lQDCPXCj1woRAMK4UeuFHo0AwzMzMzMzCQDDrhR64UeFAMQo9cKPXAEAxKPXCj1wfQDFHrhR64T5AMWZmZmZmXUAxhR64Uet8QDGj1wo9cJtAMcKPXCj1ukAx4UeuFHrZQDH///////hAMh64UeuFF0AyPXCj1wo2QDJcKPXCj1VAMnrhR64UdEAymZmZmZmTQDK4UeuFHrJAMtcKPXCj0UAy9cKPXCjwQDMUeuFHrg9AMzMzMzMzLkAzUeuFHrhNQDNwo9cKPWxAM49cKPXCi0AzrhR64UeqQDPMzMzMzMlAM+uFHrhR6EA0Cj1wo9cHQDQo9cKPXCZANEeuFHrhRUA0ZmZmZmZkQDSFHrhR64NANKPXCj1wokA0wo9cKPXBQDThR64UeuBANP///////0A1HrhR64UeQDU9cKPXCj1ANVwo9cKPXEA1euFHrhR7QDWZmZmZmZpANbhR64UeuUA11wo9cKPYQDX1wo9cKPdANhR64UeuFkA2MzMzMzM1QDZR64UeuFRANnCj1wo9c0A2j1wo9cKSQDauFHrhR7FANszMzMzM0EA264UeuFHvQDcKPXCj1w5ANyj1wo9cLUA3R64UeuFMQDdmZmZmZmtAN4UeuFHrikA3o9cKPXCpQDfCj1wo9chAN+FHrhR650A4AAAAAAAGQDgeuFHrhSVAOD1wo9cKREA4XCj1wo9jQDh64UeuFIJAOJmZmZmZoUA4uFHrhR7AQDjXCj1wo99AOPXCj1wo/kA5FHrhR64dQDkzMzMzMzxAOVHrhR64W0A5cKPXCj16QDmPXCj1wplAOa4UeuFHuEA5zMzMzMzXQDnrhR64UfZAOgo9cKPXFUA6KPXCj1w0QDpHrhR64VNAOmZmZmZmckA6hR64UeuRQDqj1wo9cLBAOsKPXCj1z0A64UeuFHruQDsAAAAAAA1AOx64UeuFLEA7PXCj1wpLQDtcKPXCj2pAO3rhR64UiUA7mZmZmZmoQDu4UeuFHsdAO9cKPXCj5kA79cKPXCkFQDwUeuFHriRAPDMzMzMzQ0A8UeuFHrhiQDxwo9cKPYFAPI9cKPXCoEA8rhR64Ue/QDzMzMzMzN5APOuFHrhR/UA9Cj1wo9ccQD0o9cKPXDtAPUeuFHrhWkA9ZmZmZmZ5QD2FHrhR65hAPaPXCj1wt0A9wo9cKPXWQD3hR64UevVAPgAAAAAAFEA+HrhR64UzQD49cKPXClJAPlwo9cKPcUA+euFHrhSQQD6ZmZmZma9APrhR64UezkA+1wo9cKPtQD71wo9cKQxAPxR64UeuK0A/MzMzMzNKQD9R64UeuGlAP3Cj1wo9iEA/j1wo9cKnQD+uFHrhR8ZAP8zMzMzM5UA/64UeuFIEQEAFHrhR65FAQBR64UeuIEBAI9cKPXCvQEAzMzMzMz5AQEKPXCj1zUBAUeuFHrhcQEBhR64UeutAQHCj1wo9ekBAgAAAAAAJQECPXCj1wphAQJ64UeuFJ0BArhR64Ue2QEC9cKPXCkVAQMzMzMzM1EBA3Cj1wo9jQEDrhR64UfJAQPrhR64UgUBBCj1wo9cQQEEZmZmZmZ9AQSj1wo9cLkBBOFHrhR69QEFHrhR64UxAQVcKPXCj20BBZmZmZmZqQEF1wo9cKPlAQYUeuFHriEBBlHrhR64XQEGj1wo9cKZAQbMzMzMzNUBBwo9cKPXEQEHR64UeuFNAQeFHrhR64kBB8KPXCj1xQEIAAAAAAABAQg9cKPXCj0BCHrhR64UeQEIuFHrhR61AQj1wo9cKPEBCTMzMzMzLQEJcKPXCj1pAQmuFHrhR6UBCeuFHrhR4QEKKPXCj1wdAQpmZmZmZlkBCqPXCj1wlQEK4UeuFHrRAQseuFHrhQ0BC1wo9cKPSQELmZmZmZmFAQvXCj1wo8EBDBR64Uet/QEMUeuFHrg5AQyPXCj1wnUBDMzMzMzMsQENCj1wo9btAQ1HrhR64SkBDYUeuFHrZQENwo9cKPWhAQ3//////90BDj1wo9cKGQEOeuFHrhRVAQ64UeuFHpEBDvXCj1wozQEPMzMzMzMJAQ9wo9cKPUUBD64UeuFHgQEP64UeuFG9ARAo9cKPW/kBEGZmZmZmNQEQo9cKPXBxARDhR64Ueq0BER64UeuE6QERXCj1wo8lARGZmZmZmWEBEdcKPXCjnQESFHrhR63ZARJR64UeuBUBEo9cKPXCUQESzMzMzMyNARMKPXCj1skBE0euFHrhBQEThR64UetBARPCj1wo9X0BE///////uQEUPXCj1wn1ARR64UeuFDEBFLhR64UebQEU9cKPXCipARUzMzMzMuUBFXCj1wo9IQEVrhR64UddARXrhR64UZkBFij1wo9b1QEWZmZmZmYRARaj1wo9cE0BFuFHrhR6iQEXHrhR64TFARdcKPXCjwEBF5mZmZmZPQEX1wo9cKN5ARgUeuFHrbUBGFHrhR638QEYj1wo9cItARjMzMzMzGkBGQo9cKPWpQEZR64UeuDhARmFHrhR6x0BGcKPXCj1WQEZ//////+VARo9cKPXCdEBGnrhR64UDQEauFHrhR5JARr1wo9cKIUBGzMzMzMywQEbcKPXCjz9ARuuFHrhRzkBG+uFHrhRdQEcKPXCj1uxARxmZmZmZe0BHKPXCj1wKQEc4UeuFHplAR0euFHrhKEBHVwo9cKO3QEdmZmZmZkZAR3XCj1wo1UBHhR64UetkQEeUeuFHrfNAR6PXCj1wgkBHszMzMzMRQEfCj1wo9aBAR9HrhR64L0BH4UeuFHq+QEfwo9cKPU1AR///////3EBID1wo9cJrQEgeuFHrhPpASC4UeuFHiUBIPXCj1woYQEhMzMzMzKdASFwo9cKPNkBIa4UeuFHFQEh64UeuFFRASIo9cKPW40BImZmZmZlyQEio9cKPXAFASLhR64UekEBIx64UeuEfQEjXCj1wo65ASOZmZmZmPUBI9cKPXCjMQEkFHrhR61tASRR64Uet6kBJI9cKPXB5QEkzMzMzMwhASUKPXCj1l0BJUeuFHrgmQElhR64UerVASXCj1wo9REBJf//////TQEmPXCj1wmJASZ64UeuE8UBJrhR64UeAQEm9cKPXCg9ASczMzMzMnkBJ3Cj1wo8tQEnrhR64UbxASfrhR64US0BKCj1wo9baQEoZmZmZmWlASij1wo9b+EBKOFHrhR6HQEpHrhR64RZASlcKPXCjpUBKZmZmZmY0QEp1wo9cKMNASoUeuFHrUkBKlHrhR63hQEqj1wo9cHBASrMzMzMy/0BKwo9cKPWOQErR64UeuB1ASuFHrhR6rEBK8KPXCj07QEr//////8pASw9cKPXCWUBLHrhR64ToQEsuFHrhR3dASz1wo9cKBkBLTMzMzMyVQEtcKPXCjyRAS2uFHrhRs0BLeuFHrhRCQEuKPXCj1tFAS5mZmZmZYEBLqPXCj1vvQEu4UeuFHn5AS8euFHrhDUBL1wo9cKOcQEvmZmZmZitAS/XCj1woukBMBR64UetJQEwUeuFHrdhATCPXCj1wZ0BMMzMzMzL2QExCj1wo9YVATFHrhR64FEBMYUeuFHqjQExwo9cKPTJATH//////wUBMj1wo9cJQQEyeuFHrhN9ATK4UeuFHbkBMvXCj1wn9QEzMzMzMzIxATNwo9cKPG0BM64UeuFGqQEz64UeuFDlATQo9cKPWyEBNGZmZmZlXQE0o9cKPW+ZATThR64UedUBNR64UeuEEQE1XCj1wo5NATWZmZmZmIkBNdcKPXCixQE2FHrhR60BATZR64Uetz0BNo9cKPXBeQE2zMzMzMu1ATcKPXCj1fEBN0euFHrgLQE3hR64UeppATfCj1wo9KUBN//////+4QE4AAAAAAABATgAAAAAAAA==" YData="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" Color="4278255360"/>
+      </OMCPlot>
+      <Input>plot({Cell.N1,measured,CA.V})</Input>
+      <Output>[done]</Output>
+    </GraphCell>
+    <TextCell style="Text">
+      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Ubuntu'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
+&lt;tr>
+&lt;td style="border: none;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">To reproduce the other figures, the following changes have to be performed:&lt;/span>&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;"> * final time of integration&lt;/span>&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;"> * implement a RampedSource ramped potential and use it also for GlucFact&lt;/span>&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;"> * change r parameters&lt;/span>&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Times New Roman'; font-size:12pt; color:#000000;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">It should be possible to perform all of the experiments changing only the ISRMeasurement model &amp;quot;container&amp;quot; code.&lt;/span>&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Times New Roman'; font-size:12pt; color:#000000;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Times New Roman'; font-size:12pt; color:#000000;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Times New Roman'; font-size:12pt; color:#000000;">&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
+    </TextCell>
+    <GraphCell style="Graph" closed="false">
+      <Input>// Use this to inspect the value of a variable at a given time
+val(measured,2.5)</Input>
+      <Output>155.835130255886</Output>
+    </GraphCell>
+  </GroupCell>
+</Notebook>

@@ -1,0 +1,637 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML" overflow="scroll" altimg="si121.gif">
+  <mrow>
+    <mtable columnalign="left">
+      <mtr columnalign="left">
+        <mtd columnalign="left">
+          <mrow>
+            <mi>d</mi>
+            <msub>
+              <mi>N</mi>
+              <mn>1</mn>
+            </msub>
+            <mo>/</mo>
+            <mi>d</mi>
+            <mi>t</mi>
+            <mo>=</mo>
+            <mo>&#x2212;</mo>
+            <mo stretchy="false">[</mo>
+            <mn>3</mn>
+            <msub>
+              <mi>k</mi>
+              <mn>1</mn>
+            </msub>
+            <msub>
+              <mi>C</mi>
+              <mrow>
+                <mtext>md</mtext>
+              </mrow>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <mi>t</mi>
+            <mo stretchy="false">)</mo>
+            <mo>+</mo>
+            <msub>
+              <mi>r</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <mo stretchy="false">]</mo>
+            <msub>
+              <mi>N</mi>
+              <mn>1</mn>
+            </msub>
+            <mo>+</mo>
+            <msub>
+              <mi>k</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>+</mo>
+            <msub>
+              <mi>r</mi>
+              <mn>1</mn>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>5</mn>
+            </msub>
+          </mrow>
+        </mtd>
+      </mtr>
+      <mtr columnalign="left">
+        <mtd columnalign="left">
+          <mrow>
+            <mi>d</mi>
+            <msub>
+              <mi>N</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>/</mo>
+            <mi>d</mi>
+            <mi>t</mi>
+            <mo>=</mo>
+            <mn>3</mn>
+            <msub>
+              <mi>k</mi>
+              <mn>1</mn>
+            </msub>
+            <msub>
+              <mi>C</mi>
+              <mrow>
+                <mtext>md</mtext>
+              </mrow>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <mi>t</mi>
+            <mo stretchy="false">)</mo>
+            <msub>
+              <mi>N</mi>
+              <mn>1</mn>
+            </msub>
+            <mo>&#x2212;</mo>
+            <mo stretchy="false">[</mo>
+            <mn>2</mn>
+            <msub>
+              <mi>k</mi>
+              <mn>1</mn>
+            </msub>
+            <msub>
+              <mi>C</mi>
+              <mrow>
+                <mtext>md</mtext>
+              </mrow>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <mi>t</mi>
+            <mo stretchy="false">)</mo>
+            <mo>+</mo>
+            <msub>
+              <mi>k</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <mo stretchy="false">]</mo>
+            <msub>
+              <mi>N</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>+</mo>
+            <mn>2</mn>
+            <msub>
+              <mi>k</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>3</mn>
+            </msub>
+          </mrow>
+        </mtd>
+      </mtr>
+      <mtr columnalign="left">
+        <mtd columnalign="left">
+          <mrow>
+            <mi>d</mi>
+            <msub>
+              <mi>N</mi>
+              <mn>3</mn>
+            </msub>
+            <mo>/</mo>
+            <mi>d</mi>
+            <mi>t</mi>
+            <mo>=</mo>
+            <mn>2</mn>
+            <msub>
+              <mi>k</mi>
+              <mn>1</mn>
+            </msub>
+            <msub>
+              <mi>C</mi>
+              <mrow>
+                <mtext>md</mtext>
+              </mrow>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>2</mn>
+            </msub>
+            <mo>&#x2212;</mo>
+            <mo stretchy="false">[</mo>
+            <msub>
+              <mi>k</mi>
+              <mn>1</mn>
+            </msub>
+            <msub>
+              <mi>C</mi>
+              <mrow>
+                <mtext>md</mtext>
+              </mrow>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <mi>t</mi>
+            <mo stretchy="false">)</mo>
+            <mo>+</mo>
+            <mn>2</mn>
+            <msub>
+              <mi>k</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <mo stretchy="false">]</mo>
+            <msub>
+              <mi>N</mi>
+              <mn>3</mn>
+            </msub>
+            <mo>+</mo>
+            <mn>3</mn>
+            <msub>
+              <mi>k</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>4</mn>
+            </msub>
+          </mrow>
+        </mtd>
+      </mtr>
+      <mtr columnalign="left">
+        <mtd columnalign="left">
+          <mrow>
+            <mi>d</mi>
+            <msub>
+              <mi>N</mi>
+              <mn>4</mn>
+            </msub>
+            <mo>/</mo>
+            <mi>d</mi>
+            <mi>t</mi>
+            <mo>=</mo>
+            <msub>
+              <mi>k</mi>
+              <mn>1</mn>
+            </msub>
+            <msub>
+              <mi>C</mi>
+              <mrow>
+                <mtext>md</mtext>
+              </mrow>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <mi>t</mi>
+            <mo stretchy="false">)</mo>
+            <msub>
+              <mi>N</mi>
+              <mn>3</mn>
+            </msub>
+            <mo>&#x2212;</mo>
+            <mo stretchy="false">[</mo>
+            <mn>3</mn>
+            <msub>
+              <mi>k</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <mo>+</mo>
+            <msub>
+              <mi>u</mi>
+              <mn>1</mn>
+            </msub>
+            <mo stretchy="false">]</mo>
+            <msub>
+              <mi>N</mi>
+              <mn>4</mn>
+            </msub>
+          </mrow>
+        </mtd>
+      </mtr>
+      <mtr columnalign="left">
+        <mtd columnalign="left">
+          <mrow>
+            <mi>d</mi>
+            <msub>
+              <mi>N</mi>
+              <mn>5</mn>
+            </msub>
+            <mo>/</mo>
+            <mi>d</mi>
+            <mi>t</mi>
+            <mo>=</mo>
+            <msub>
+              <mi>r</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>1</mn>
+            </msub>
+            <mo>&#x2212;</mo>
+            <mo stretchy="false">[</mo>
+            <msub>
+              <mi>r</mi>
+              <mn>1</mn>
+            </msub>
+            <mo>+</mo>
+            <msub>
+              <mi>r</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>2</mn>
+              </mrow>
+            </msub>
+            <mo stretchy="false">]</mo>
+            <msub>
+              <mi>N</mi>
+              <mn>5</mn>
+            </msub>
+            <mo>+</mo>
+            <msub>
+              <mi>r</mi>
+              <mn>2</mn>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>6</mn>
+            </msub>
+          </mrow>
+        </mtd>
+      </mtr>
+      <mtr columnalign="left">
+        <mtd columnalign="left">
+          <mrow>
+            <mi>d</mi>
+            <msub>
+              <mi>N</mi>
+              <mn>6</mn>
+            </msub>
+            <mo>/</mo>
+            <mi>d</mi>
+            <mi>t</mi>
+            <mo>=</mo>
+            <msub>
+              <mi>r</mi>
+              <mn>3</mn>
+            </msub>
+            <mo>+</mo>
+            <msub>
+              <mi>r</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>2</mn>
+              </mrow>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>5</mn>
+            </msub>
+            <mo>&#x2212;</mo>
+            <mo stretchy="false">[</mo>
+            <msub>
+              <mi>r</mi>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn>3</mn>
+              </mrow>
+            </msub>
+            <mo>+</mo>
+            <msub>
+              <mi>r</mi>
+              <mn>2</mn>
+            </msub>
+            <mo stretchy="false">]</mo>
+            <msub>
+              <mi>N</mi>
+              <mn>6</mn>
+            </msub>
+          </mrow>
+        </mtd>
+      </mtr>
+      <mtr columnalign="left">
+        <mtd columnalign="left">
+          <mrow>
+            <mi>d</mi>
+            <msub>
+              <mi>N</mi>
+              <mtext>F</mtext>
+            </msub>
+            <mo>/</mo>
+            <mi>d</mi>
+            <mi>t</mi>
+            <mo>=</mo>
+            <msub>
+              <mi>u</mi>
+              <mn>1</mn>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mn>4</mn>
+            </msub>
+            <mo>&#x2212;</mo>
+            <msub>
+              <mi>u</mi>
+              <mn>2</mn>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mtext>F</mtext>
+            </msub>
+          </mrow>
+        </mtd>
+      </mtr>
+      <mtr columnalign="left">
+        <mtd columnalign="left">
+          <mrow>
+            <mi>d</mi>
+            <msub>
+              <mi>N</mi>
+              <mtext>R</mtext>
+            </msub>
+            <mo>/</mo>
+            <mi>d</mi>
+            <mi>t</mi>
+            <mo>=</mo>
+            <msub>
+              <mi>u</mi>
+              <mn>2</mn>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mtext>F</mtext>
+            </msub>
+            <mo>&#x2212;</mo>
+            <msub>
+              <mi>u</mi>
+              <mn>3</mn>
+            </msub>
+            <msub>
+              <mi>N</mi>
+              <mtext>R</mtext>
+            </msub>
+            <mo>,</mo>
+          </mrow>
+        </mtd>
+      </mtr>
+    </mtable>
+  </mrow>
+</math>
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" overflow="scroll" altimg="si80.gif">
+  <mrow>
+    <mi>d</mi>
+    <msub>
+      <mi>C</mi>
+      <mrow>
+        <mtext>md</mtext>
+      </mrow>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>/</mo>
+    <mi>d</mi>
+    <mi>t</mi>
+    <mo>=</mo>
+    <msub>
+      <mi>f</mi>
+      <mrow>
+        <mtext>md</mtext>
+      </mrow>
+    </msub>
+    <msub>
+      <mi>J</mi>
+      <mtext>L</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>&#x2212;</mo>
+    <msub>
+      <mi>f</mi>
+      <mrow>
+        <mtext>md</mtext>
+      </mrow>
+    </msub>
+    <mi>B</mi>
+    <mo stretchy="false">[</mo>
+    <msub>
+      <mi>C</mi>
+      <mrow>
+        <mtext>md</mtext>
+      </mrow>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>&#x2212;</mo>
+    <msub>
+      <mi>C</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo stretchy="false">]</mo>
+    <mo>,</mo>
+  </mrow>
+</math>
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" overflow="scroll" altimg="si81.gif">
+  <mrow>
+    <mi>d</mi>
+    <msub>
+      <mi>C</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>/</mo>
+    <mi>d</mi>
+    <mi>t</mi>
+    <mo>=</mo>
+    <msub>
+      <mi>f</mi>
+      <mtext>i</mtext>
+    </msub>
+    <msub>
+      <mi>J</mi>
+      <mtext>R</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>+</mo>
+    <msub>
+      <mi>f</mi>
+      <mtext>V</mtext>
+    </msub>
+    <msub>
+      <mi>f</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mi>B</mi>
+    <mo stretchy="false">[</mo>
+    <msub>
+      <mi>C</mi>
+      <mrow>
+        <mtext>md</mtext>
+      </mrow>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>&#x2212;</mo>
+    <msub>
+      <mi>C</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo stretchy="false">]</mo>
+    <mo>&#x2212;</mo>
+    <msub>
+      <mi>f</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mi>L</mi>
+    <mo stretchy="false">(</mo>
+    <msub>
+      <mi>C</mi>
+      <mtext>i</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo stretchy="false">)</mo>
+    <mo>,</mo>
+  </mrow>
+</math>
+
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" overflow="scroll" altimg="si92.gif">
+  <mrow>
+    <msub>
+      <mi>J</mi>
+      <mtext>L</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>=</mo>
+    <mo>&#x2212;</mo>
+    <mi>&#x3B1;</mi>
+    <msub>
+      <mi>I</mi>
+      <mtext>L</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>/</mo>
+    <msub>
+      <mi>v</mi>
+      <mrow>
+        <mtext>md</mtext>
+      </mrow>
+    </msub>
+    <mo>,</mo>
+  </mrow>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" overflow="scroll" altimg="si93.gif">
+  <mrow>
+    <msub>
+      <mi>J</mi>
+      <mtext>R</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>=</mo>
+    <mo>&#x2212;</mo>
+    <mi>&#x3B1;</mi>
+    <msub>
+      <mi>I</mi>
+      <mtext>R</mtext>
+    </msub>
+    <mo stretchy="false">(</mo>
+    <mi>t</mi>
+    <mo stretchy="false">)</mo>
+    <mo>/</mo>
+    <msub>
+      <mi>v</mi>
+      <mrow>
+        <mtext>cell</mtext>
+      </mrow>
+    </msub>
+    <mo>,</mo>
+  </mrow>
+</math>
+

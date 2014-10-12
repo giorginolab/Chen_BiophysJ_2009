@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by libAntimony version v2.1-beta on 2012-07-11 18:48 with libSBML version 5.1.0-b0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="SquareSource" name="SquareSource">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="minf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> V </ci>
+            </bvar>
+            <bvar>
+              <ci> Vm </ci>
+            </bvar>
+            <bvar>
+              <ci> sm </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <cn type="integer"> 1 </cn>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> Vm </ci>
+                      <ci> V </ci>
+                    </apply>
+                    <ci> sm </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="heavx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> x </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <abs/>
+                  <ci> x </ci>
+                </apply>
+                <ci> x </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <apply>
+                    <abs/>
+                    <ci> x </ci>
+                  </apply>
+                </apply>
+                <cn type="e-notation"> 1 <sep/> -5 </cn>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="modx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> a </ci>
+            </bvar>
+            <bvar>
+              <ci> b </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <ci> a </ci>
+              <apply>
+                <times/>
+                <ci> b </ci>
+                <apply>
+                  <floor/>
+                  <apply>
+                    <divide/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfCompartments>
+      <compartment sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="V" compartment="default_compartment" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="Vrest" value="-70" constant="true"/>
+      <parameter id="Vburst" value="-20" constant="true"/>
+      <parameter id="tstep" value="0" constant="true"/>
+      <parameter id="ton" value="6" constant="true"/>
+      <parameter id="toff" value="6" constant="true"/>
+      <parameter id="tcycle" value="12" constant="true"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="V">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> Vrest </ci>
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <ci> Vburst </ci>
+                <ci> Vrest </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <ci> heavx </ci>
+                  <apply>
+                    <ci> modx </ci>
+                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                    <ci> tcycle </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <ci> heavx </ci>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <ci> modx </ci>
+                      <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                      <ci> tcycle </ci>
+                    </apply>
+                    <ci> toff </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+  </model>
+</sbml>

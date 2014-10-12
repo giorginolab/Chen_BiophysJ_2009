@@ -1,0 +1,83 @@
+Antimony conversion of Yi-der Chen et al, Identifying the Targets of
+the Amplifying Pathway for Insulin Secretion in Pancreatic b-Cells by
+Kinetic Modeling of Granule Exocytosis, Biophysical Journal, Volume
+95, 2226-2241, doi:10.1529/biophysj.107.124990, based on the original
+XPP implementation available at
+http://lbm.niddk.nih.gov/sherman/gallery/beta/Vesicle/*
+
+Author of the conversion: 
+Toni Giorgino, ISIB, National Research Council of Italy
+toni.giorgino@isib.cnr.it  mer 11 lug 2012, 18.12.55, CEST
+
+An extensively-commented version is also available.
+
+This file should be processed through Antimony
+(http://antimony.sourceforge.net/) to generate SBML files. You
+probably want to select the "Flatten" option (otherwise you need a
+comp-sbml compliant engine).  
+
+Validation: You can integrate the resulting "Secretion.xml" SBML file
+(which contains the encapsulated Calcium and SquareSource models). The
+secretion curves (SE) reproduce the paper's SE.  Tested with COPASI 4.8
+(www.copasi.org) and RoadRunner/SBW Simulation Tool v1.4.4424.32048
+(sbw.sourceforge.net).
+
+Curves in Figure 2 are obtained after subtracting a 2-minutes-delayed
+version. This can be approximated with the "ISR.xml" model in
+RoadRunner, but not in COPASI, which lacks both events and delay.
+
+Note that both this implementation (and the original XPP) do not
+faithfully reproduce the calcium dynamics part of Figure 2. In
+particular, Jncx is negative at steady state, and the transitions in
+Figure 2 are much steeper.
+
+
+----
+
+
+Finding a software to integrate these SBML models is tricky.
+
+
+Tested software:
+ - Simbiology (Matlab 2009b)
+   * only supports SBML L2V1 (no functions)
+   * can use matlab functions, but they are not SBML
+   * Antimony should export L2V1, but does not respect the 
+     assigment order mandated by the spec.
+   * abandoned because of the above problems
+ - RoadRunner (part of Systems Biology Workbench): 
+   * does not support the "rem()" MathML function
+   * ignores the "delay()" function
+   * ignores "rateRule" elements (workaround: use kineticLaw, i.e. 
+     "x'=" becomes "->x;" in Antimony)
+   * SE(t) works
+   * ISR(t) works
+ - COPASI
+   * does not support the "rem()" MathML function
+   * ignores the "delay()" function
+   * SE(t) works
+   * does not support (otherwise valid) simultaneous events, and ignores
+     priorities. The crude 2'-ISR approximation does not work.
+ - SBMLsimulator 1.0, http://www.cogsys.cs.uni-tuebingen.de/
+   		      /software/SBMLsimulator/downloads/index.html
+   * Works (not tested without workarounds)
+
+
+
+All software:
+ - Pay attention to discontinuities and singularities. For example,
+   x/abs(x) will crash integration... on occasions.
+ - Abrupt discontinuities may be missed. See heavx(). Prefer events.
+
+
+QtAntimony v 2.1 beta can't convert the Secretion model in CellML.
+
+
+More integrators to test (from Bergmann's "Implementing SBML Events"
+presentation): 
+	       RoadRunner
+	       PySCeS
+	       MathSBML
+	       iBioSim
+	       ByoDyn
+	       SBML ODE Solver
