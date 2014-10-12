@@ -1,3 +1,7 @@
+Introduction
+------------
+
+
 This folder contains several implementations of Chen-Wang-Sherman's model of 
 insulin secretion based on kinetic modeling of granule exocytosis as described
 by [1].
@@ -5,11 +9,16 @@ by [1].
 Where allowed by the underlying language, the models have been decomposed
 hierarchically in the following components:
 
-	Membrane	A square voltage source
-	Calcium		Calcium dynamics, with two state variables (Cmd, Ci)
-	Granules	The kinetic chain of granule compartments
-	ISR		"Instantaneous" (2-min delayed) secretion delta
+Component     | Description
+--------------|--------------------
+Membrane	|A square voltage source
+Calcium		|Calcium dynamics, with two state variables (Cmd, Ci)
+Granules	|The kinetic chain of granule compartments
+ISR		|"Instantaneous" (2-min delayed) secretion delta
 
+
+Author
+------
 
 Toni Giorgino, 24-8-2012, toni.giorgino@isib.cnr.it
 
@@ -18,9 +27,10 @@ National Research Council of Italy
 Corso Stati Uniti 4
 Padova
 
--------------------------------
+
 
 References
+----------
 
 1. Chen Y, Wang S, Sherman A. Identifying the Targets of the
    Amplifying Pathway for Insulin Secretion in Pancreatic β-Cells by
@@ -32,14 +42,15 @@ References
    http://mrb.niddk.nih.gov/sherman/gallery/beta/Vesicle/henquin-pools.ode
 
 
--------------------------------
 
 
 Contents of the subdirectories:
+-------------------------------
 
-* README.txt				This file
+* README				This file
 
-* chen model coding r9.doc		Detailed textual description of the model
+* xpp-aut-original-commented/
+	Original XPP-AUT implementation from ref. [2], with added comments.
 
 * conversion-matlab/
 	Matlab and Octave implementation (most files are in common).
