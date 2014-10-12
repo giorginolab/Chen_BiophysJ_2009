@@ -86,7 +86,7 @@ ISIB-CNR .
 
 
 
-Contents of the subdirectories:
+Contents of the subdirectories
 ============
 
 ## xpp-aut-original-commented
@@ -95,7 +95,7 @@ Original XPP-AUT implementation straight out from ref. [2], with added
 comments.
 
 
-## conversion-matlab/ 
+## conversion-matlab
 
 Matlab and Octave implementation.  Use either `ChenModel_run_matlab.m`
 or `ChenModel_run_octave.m` depending on the software you are
@@ -104,7 +104,7 @@ using. The other files are shared.
 Tested in Matlab R2012a and Octave 3.6.2.
 
 
-## conversion-simulink/
+## conversion-simulink
 
 Simulink implementation. Care has been used to allow 
 for native code generation. Tested in R2012a.
@@ -118,13 +118,13 @@ functions.txt		| Readable content of the FCN blocks
 
 
 
-## conversion-modelica/
+## conversion-modelica
 
 Modelica implementation. Tested on OpenModelica.  Both code-only
 (`HenquinPools_r8.mo`) and an OpenModelica notebook are provided.
 
 
-## conversion-antimony-sbml/
+## conversion-antimony-sbml
 
 Antimony and SBML implementations produced by Lucien Smith's
 QTAntimony (tested with QTAntimony 2.3 beta).
@@ -137,15 +137,17 @@ File | Description
 
 From Antimony, these models are automatically generated:
 
-* Flat SBML (tested in [COPASI](www.copasi.org) 4.8, [RoadRunner/SBW
-  Simulation Tool](sbw.sourceforge.net) v1.4.4424.32048, and 
+* Flat SBML. Tested in [COPASI](http://www.copasi.org) 4.8, [RoadRunner/SBW
+  Simulation Tool](http://sbw.sourceforge.net) v1.4.4424.32048, and 
   others. See enclosed NOTES.txt file for details.
 
-* Modular SBML, according to the sbml-comp extension.
+* Modular SBML, according to the
+  [sbml-comp](http://sbml.org/Documents/Specifications/SBML_Level_3/Packages/comp)
+  extension.
 
 
 
-## conversion-madonna/
+## conversion-madonna
 
 Berkeley Madonna implementation (copy and paste the code in
 `ChenModel.bm.txt` in the program's Equations panel). Tested with
