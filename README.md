@@ -2,13 +2,23 @@ Introduction
 ============
 
 
-This folder contains several implementations of Chen-Wang-Sherman's
-model of insulin secretion based on kinetic modeling of granule
-exocytosis as described by [1]. The goal of all implementations is to
-reproduce the paper's Figures 2 and 4.
+This folder contains several implementations of [Chen-Wang-Sherman's
+model](http://dx.doi.org/10.1529%2Fbiophysj.107.124990) of insulin
+secretion based on kinetic modeling of granule exocytosis [1]. The
+goal of all implementations is to reproduce the paper's Figures 2 and
+4.
 
-Where allowed by the underlying language, the models have been
-decomposed hierarchically in the following components:
+
+Implementation remarks
+----------------------
+
+Each of the implementations is a refactoring of the original XPP code
+(found in Ref. 2 above). 
+
+Modular language constructs have been used
+where possible to split the model into separate calcium and vesicle
+components for readability, as follows. 
+
 
 Component | Description                                          
 ----------|-----------------------------------------------------
@@ -18,7 +28,22 @@ Granules  | The kinetic chain of granule compartments
 ISR       | "Instantaneous" (2-min delayed) secretion delta      
 
 
-Summary of the model
+Variables, parameters and units have been kept the same as the
+original code. Resupply rates $r_1$ and $r_2$ are affected by two
+different parameters, called `Kp` and `Kp2` in the code, with the same
+value; the equations use a single symbol $K_p$. Intervals given for
+variables and parameters reflect the ones used to reproduce paper’s
+Figure 4.
+
+The model and data have been derived from publications and
+supplementary material (Refs. 1-2).  The conversions rely heavily on
+the [original
+implementation](http://mrb.niddk.nih.gov/sherman/gallery/beta/Vesicle/henquin-pools.ode)
+in XPP-AUT.
+
+
+
+Overview of the model
 -------------
 
 The model includes: a membrane; two types of inward Ca++ voltage-gated
@@ -46,35 +71,18 @@ Kp,* plus the steady state (used as initial values).
 Interface
 ---------
 
-Direction | Variable | Description
-----------|-----|--------
-Input	  | *V(t)* | 	membrane depolarization. Square wave between -70 and -20 mV with 6 min down and 6 min up to reproduce Figure 4, left; steady high for Figure 4, right. Other protocols are also used.
-Output    | *ISR* |	“Instantaneous” insulin secretion in the last 2 min (per minute). The model predicts (and parameters were fitted to reproduce) this quantity.
+| Direction | Variable | Description                                                                                                                                                                           |
+|-----------+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Input     | *V(t)*   | membrane depolarization. Square wave between -70 and -20 mV with 6 min down and 6 min up to reproduce Figure 4, left; steady high for Figure 4, right. Other protocols are also used. |
+| Output    | *ISR*    | “Instantaneous” insulin secretion in the last 2 min (per minute). The model predicts (and parameters were fitted to reproduce) this quantity.                                         |
 
-
-
-Implementation remarks
-----------------------
-
-Each of the implementations is a refactoring of the original XPP code
-(found in Ref. 2 above). Modular language constructs have been used
-where possible to split the model into separate calcium and vesicle
-components for readability.  Variables, parameters and units have been
-kept the same as the original code. Resupply rates $r_1$ and $r_2$ are
-affected by two different parameters, called `Kp` and `Kp2` in the code,
-with the same value; the equations use a single symbol $K_p$. Intervals
-given for variables and parameters reflect the ones used to reproduce
-paper’s Figure 4.
-
-The model and data have been derived from publications and the XPP
-implementation provided as supplementary material (Refs. 1-2).
 
 
 
 Author
 ------
 
-Conversions by T. Giorgino (ISIB-CNR), relying heavily on the XPP-AUT
+Conversions by T. Giorgino (ISIB-CNR), heavily borrowing from the XPP-AUT
 original. 24-8-2012.
 
 
@@ -96,7 +104,8 @@ provided.
 ## Matlab and Octave
 
 Use either `ChenModel_run_matlab.m` or `ChenModel_run_octave.m`
-depending on the software you are using. The other files are shared.
+depending on the software you are using. The other files are common
+between the two.
 
 Tested in Matlab R2012a and Octave 3.6.2.
 
@@ -106,12 +115,12 @@ Tested in Matlab R2012a and Octave 3.6.2.
 Tested in R2012a. Care has been used to allow for native code
 generation.
 
-File | Description
------|----
-chen_init.m		|	Matlab file containing the model's constants. Evaluate this first.
-chen_r2.mdl   		| Simulink model
-chen_r2_html.zip  	| HTML representation of the model
-functions.txt		| Readable content of the FCN blocks
+| File               | Description                                                        |
+|--------------------+--------------------------------------------------------------------|
+| `chen_init.m`      | Matlab file containing the model's constants. Evaluate this first. |
+| `chen_r2.mdl`      | Simulink model                                                     |
+| `chen_r2_html.zip` | HTML representation of the model                                   |
+| `functions.txt`    | Readable content of the FCN blocks                                 |
 
 
 
@@ -122,11 +131,11 @@ Lucien Smith's [QTAntimony](http://antimony.sourceforge.net/). Tested
 with QTAntimony 2.3 beta.
 
 
-File | Description 
------|---------
-`4_henquin-pools-toni_r5.ant`	| Antimony implementation
-`4_henquin-pools-toni_r5.sbml`	| Flattened SBML generated by QTAntimony
-`NOTES.txt` 			| Implementation and compatibility remarks
+| File                           | Description                              |
+|--------------------------------+------------------------------------------|
+| `4_henquin-pools-toni_r5.ant`  | Antimony implementation                  |
+| `4_henquin-pools-toni_r5.sbml` | Flattened SBML generated by QTAntimony   |
+| `NOTES.txt`                    | Implementation and compatibility remarks |
 
 These codes are automatically generated by the Antimony engine:
 
@@ -159,7 +168,7 @@ References
 1. Chen Y, Wang S, Sherman A. Identifying the Targets of the
    Amplifying Pathway for Insulin Secretion in Pancreatic β-Cells by
    Kinetic Modeling of Granule Exocytosis. Biophysical Journal. 2008
-   Set 1;95(5):2226–41
+   Set 1;95(5):2226–41. [doi:10.1529/biophysj.107.124990](http://dx.doi.org/10.1529%2Fbiophysj.107.124990)
 
 2. Supplementary material for the above (online) “Beta Cell Exocytosis
    Model”,
