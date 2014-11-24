@@ -1,0 +1,55 @@
+heavx(x):= (abs(x)+x)/(2*abs(x)+1e-5)
+
+<ct:FunctionDefinition symbId="heavx" symbolType="real">
+  <ct:Description>Function: heavx</ct:Description>
+  <ct:FunctionArgument symbId="x" symbolType="real"/>
+  <ct:Definition>
+    <math:Equation>
+      <math:Binop op="divide">
+        <math:Binop op="plus">
+          <math:Uniop op="abs">
+            <ct:SymbRef symbIdRef="x"/>
+          </math:Uniop>
+          <ct:SymbRef symbIdRef="x"/>
+        </math:Binop>
+        <math:Binop op="plus">
+          <math:Binop op="times">
+            <ct:Real>2</ct:Real>
+            <math:Uniop op="abs">
+              <ct:SymbRef symbIdRef="x"/>
+            </math:Uniop>
+          </math:Binop>
+          <ct:Real>1e-5</ct:Real>
+        </math:Binop>
+      </math:Binop>
+    </math:Equation>
+  </ct:Definition>
+</ct:FunctionDefinition>
+
+
+modulus(a,b):=a-b*floor(a/b)
+
+<ct:FunctionDefinition symbId="modulus" symbolType="real">
+  <ct:Description>Function: modulus</ct:Description>
+  <ct:FunctionArgument symbId="a" symbolType="real"/>
+  <ct:FunctionArgument symbId="b" symbolType="real"/>
+  <ct:Definition>
+    <math:Equation>
+      <math:Binop op="minus">
+        <ct:SymbRef symbIdRef="a"/>
+        <math:Binop op="times">
+          <ct:SymbRef symbIdRef="b"/>
+          <math:Uniop op="floor">
+            <math:Binop op="divide">
+              <ct:SymbRef symbIdRef="a"/>
+              <ct:SymbRef symbIdRef="b"/>
+            </math:Binop>
+          </math:Uniop>
+        </math:Binop>
+      </math:Binop>
+    </math:Equation>
+  </ct:Definition>
+</ct:FunctionDefinition>
+
+
+
