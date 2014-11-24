@@ -4,6 +4,7 @@ Notes for the conversion of Chen-Sherman's model in PharmML
 The human-readable pieces are translated to PharmML via the 
 http://infix2pharmml.sourceforge.net service.
 
+Based directly off the original XPP version.
 
 
 Heaviside function
@@ -74,6 +75,45 @@ modulus(a,b):=a-b*floor(a/b)
 </ct:FunctionDefinition>
 
 
+Saturation function
+------
+
+```
+minf(v) = 1/(1 + exp((Vm-V)/sm))
+
+<ct:FunctionDefinition symbId="minf" symbolType="real">
+  <ct:Description>Function: minf</ct:Description>
+  <ct:FunctionArgument symbId="v" symbolType="real"/>
+  <ct:Definition>
+    <math:Equation>
+      <math:Binop op="divide">
+        <ct:Real>1</ct:Real>
+        <math:Binop op="plus">
+          <ct:Real>1</ct:Real>
+          <math:Uniop op="exp">
+            <math:Binop op="divide">
+              <math:Binop op="minus">
+                <ct:SymbRef symbIdRef="Vm"/>
+                <ct:SymbRef symbIdRef="V"/>
+              </math:Binop>
+              <ct:SymbRef symbIdRef="sm"/>
+            </math:Binop>
+          </math:Uniop>
+        </math:Binop>
+      </math:Binop>
+    </math:Equation>
+  </ct:Definition>
+</ct:FunctionDefinition>
+```
+
+
+
+Parameters
+--------
+
+TBD
+
+
 
 Voltage source
 -------
@@ -130,4 +170,102 @@ V:=Vrest + (Vburst - Vrest)*(heav(x=rem(t, tcycle)) - heav(x=rem(t,tcycle) - tof
 
 ```
 
+
+Microdomain and cytosol Ca++ concentrations
+---------
+
+```
+diff(Cmd,t):= ts*(-fmd*JL - fmd*B*(Cmd - Ci))
+
+<!-- Cmd' (ODE) --><ct:DerivativeVariable symbId="Cmd" symbolType="real">
+  <ct:Description>ODE: Cmd</ct:Description>
+  <ct:Assign>
+    <math:Equation>
+      <math:Binop op="times">
+        <ct:SymbRef symbIdRef="ts"/>
+        <math:Binop op="minus">
+          <math:Binop op="times">
+            <math:Uniop op="minus">
+              <ct:SymbRef symbIdRef="fmd"/>
+            </math:Uniop>
+            <ct:SymbRef symbIdRef="JL"/>
+          </math:Binop>
+          <math:Binop op="times">
+            <math:Binop op="times">
+              <ct:SymbRef symbIdRef="fmd"/>
+              <ct:SymbRef symbIdRef="B"/>
+            </math:Binop>
+            <math:Binop op="minus">
+              <ct:SymbRef symbIdRef="Cmd"/>
+              <ct:SymbRef symbIdRef="Ci"/>
+            </math:Binop>
+          </math:Binop>
+        </math:Binop>
+      </math:Binop>
+    </math:Equation>
+  </ct:Assign>
+  <ct:IndependentVariable>
+    <ct:SymbRef symbIdRef="t"/>
+  </ct:IndependentVariable>
+  <ct:InitialCondition>
+    <ct:InitialValue>
+      <ct:Assign>
+        <ct:SymbRef symbIdRef="Cmd_init"/>
+      </ct:Assign>
+    </ct:InitialValue>
+  </ct:InitialCondition>
+</ct:DerivativeVariable>
+```
+
+```
+diff(Ci,t):= ts*(-fi*JR + fv*fi*B*(Cmd - Ci) - fi*L)
+
+<!-- Ci' (ODE) --><ct:DerivativeVariable symbId="Ci" symbolType="real">
+  <ct:Description>ODE: Ci</ct:Description>
+  <ct:Assign>
+    <math:Equation>
+      <math:Binop op="times">
+        <ct:SymbRef symbIdRef="ts"/>
+        <math:Binop op="minus">
+          <math:Binop op="plus">
+            <math:Binop op="times">
+              <math:Uniop op="minus">
+                <ct:SymbRef symbIdRef="fi"/>
+              </math:Uniop>
+              <ct:SymbRef symbIdRef="JR"/>
+            </math:Binop>
+            <math:Binop op="times">
+              <math:Binop op="times">
+                <math:Binop op="times">
+                  <ct:SymbRef symbIdRef="fv"/>
+                  <ct:SymbRef symbIdRef="fi"/>
+                </math:Binop>
+                <ct:SymbRef symbIdRef="B"/>
+              </math:Binop>
+              <math:Binop op="minus">
+                <ct:SymbRef symbIdRef="Cmd"/>
+                <ct:SymbRef symbIdRef="Ci"/>
+              </math:Binop>
+            </math:Binop>
+          </math:Binop>
+          <math:Binop op="times">
+            <ct:SymbRef symbIdRef="fi"/>
+            <ct:SymbRef symbIdRef="L"/>
+          </math:Binop>
+        </math:Binop>
+      </math:Binop>
+    </math:Equation>
+  </ct:Assign>
+  <ct:IndependentVariable>
+    <ct:SymbRef symbIdRef="t"/>
+  </ct:IndependentVariable>
+  <ct:InitialCondition>
+    <ct:InitialValue>
+      <ct:Assign>
+        <ct:SymbRef symbIdRef="Ci_init"/>
+      </ct:Assign>
+    </ct:InitialValue>
+  </ct:InitialCondition>
+</ct:DerivativeVariable>
+```
 
