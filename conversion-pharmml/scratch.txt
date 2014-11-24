@@ -1,3 +1,16 @@
+Notes for the conversion of Chen-Sherman's model in PharmML
+===========
+
+The human-readable pieces are translated to PharmML via the 
+http://infix2pharmml.sourceforge.net service.
+
+
+
+Heaviside function
+--------
+
+
+```
 heavx(x):= (abs(x)+x)/(2*abs(x)+1e-5)
 
 <ct:FunctionDefinition symbId="heavx" symbolType="real">
@@ -25,8 +38,17 @@ heavx(x):= (abs(x)+x)/(2*abs(x)+1e-5)
     </math:Equation>
   </ct:Definition>
 </ct:FunctionDefinition>
+```
 
 
+
+Modulus function
+--------
+
+PharmML has the `rem()` function. In case it does not accept
+real-valued arguments, the following can be used.
+
+```
 modulus(a,b):=a-b*floor(a/b)
 
 <ct:FunctionDefinition symbId="modulus" symbolType="real">
@@ -51,5 +73,61 @@ modulus(a,b):=a-b*floor(a/b)
   </ct:Definition>
 </ct:FunctionDefinition>
 
+
+
+Voltage source
+-------
+
+A square source.
+
+```
+
+V:=Vrest + (Vburst - Vrest)*(heav(x=rem(t, tcycle)) - heav(x=rem(t,tcycle) - toff))
+
+<!-- V (Variable) --><ct:Variable symbId="V" symbolType="real">
+  <ct:Description>Variable V</ct:Description>
+  <ct:Assign>
+    <math:Equation>
+      <math:Binop op="plus">
+        <ct:SymbRef symbIdRef="Vrest"/>
+        <math:Binop op="times">
+          <math:Binop op="minus">
+            <ct:SymbRef symbIdRef="Vburst"/>
+            <ct:SymbRef symbIdRef="Vrest"/>
+          </math:Binop>
+          <math:Binop op="minus">
+            <math:FunctionCall>
+              <ct:SymbRef symbIdRef="heav"/>
+              <math:FunctionArgument symbId="x">
+                <math:Equation>
+                  <math:Binop op="rem">
+                    <ct:SymbRef symbIdRef="t"/>
+                    <ct:SymbRef symbIdRef="tcycle"/>
+                  </math:Binop>
+                </math:Equation>
+              </math:FunctionArgument>
+            </math:FunctionCall>
+            <math:FunctionCall>
+              <ct:SymbRef symbIdRef="heav"/>
+              <math:FunctionArgument symbId="x">
+                <math:Equation>
+                  <math:Binop op="minus">
+                    <math:Binop op="rem">
+                      <ct:SymbRef symbIdRef="t"/>
+                      <ct:SymbRef symbIdRef="tcycle"/>
+                    </math:Binop>
+                    <ct:SymbRef symbIdRef="toff"/>
+                  </math:Binop>
+                </math:Equation>
+              </math:FunctionArgument>
+            </math:FunctionCall>
+          </math:Binop>
+        </math:Binop>
+      </math:Binop>
+    </math:Equation>
+  </ct:Assign>
+</ct:Variable>
+
+```
 
 
