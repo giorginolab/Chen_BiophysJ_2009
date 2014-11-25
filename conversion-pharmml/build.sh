@@ -64,7 +64,7 @@ Jpmca := Jpmcamax*Ci/(Kpmca + Ci)
 Jncx := Jncx0*(Ci - 0.25)
 L:=Jserca + Jpmca + Jncx + Jleak            {TG: clearance from cytosol}
 
-V:=Vrest + (Vburst - Vrest)*(heav(x=rem(t, tcycle)) - heav(x=rem(t,tcycle) - toff)) 
+V:=Vrest + (Vburst - Vrest)*(heav(x=modulus(a=t, b=tcycle)) - heav(x=modulus(a=t,b=tcycle) - toff)) 
                                             {Membrane potential, a square source}
 
 
