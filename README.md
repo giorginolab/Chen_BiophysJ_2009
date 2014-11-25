@@ -124,6 +124,17 @@ generation.
 
 
 
+## PharmML
+
+The conversion occurs semi-automatically relying on the
+[infix2pharmml](infix2pharmml.sourceforge.net) converter. A bash
+script is used to merge the functions (which have to be converted
+separately) with the model code. The `implementedBy` XML attribute
+has been removed manually because it is rejected by the current
+PharmML repository.
+
+
+
 ## Antimony and SBML
 
 Antimony code and the corresponding SBML translations, produced by
@@ -158,8 +169,8 @@ JRE 1.6.0 .
 
 ## XPP-AUT
 
-Original XPP-AUT implementation straight out from ref. [2], with added
-comments.
+Not a conversion, but the original XPP-AUT implementation straight out
+from ref. [2], with added comments.
 
 
 References
