@@ -14,11 +14,11 @@ do
   if [[ ! ($line =~ ^#) ]]; then
       $c "$line" >> functions.xml
   fi
-done < functions.i2p
+done < functions.infix2pharmml
 
 
 # Gobble the structural model and convert it
-$c -s "`cat structural.i2p`" > structural.xml
+$c -s "`cat structural.infix2pharmml`" > structural.xml
 
 # PharmML lacks the delay() function
 # measured:=4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg/cell/min}
