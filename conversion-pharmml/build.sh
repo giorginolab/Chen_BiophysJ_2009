@@ -42,7 +42,6 @@ $c -q -s "
 par Vrest=-70, Vburst=-20
 par tstep=0.0, ton=12.0, toff=12.0
 par GlucFact=1.2
-par ts=60
 par fmd=0.01, fi=0.01, B=200, fv=0.00365
 par alpha=5.18e-15, vmd=4.2e-15, vcell=1.15e-12
 par gL=250, Vm=-20, Vca=25, sm=5
@@ -50,30 +49,33 @@ par Jsercamax=41.0, Kserca=0.27, Jpmcamax=21.0, Kpmca=0.5, Jleak=-0.94, Jncx0=18
 par k1=20, km1=100, r1=0.6, rm1=1, r20=0.006, rm2=0.001
 par r30=1.205, rm3=0.0001, u1=2000, u2=3, u3=0.02
 par Kp=2.3, Kp2=2.3
+
 par tau=2.0
+par ts=60
 
-IL:=gL*minf(v=V)*(V- Vca)
-IR:=0.25*IL
+IL:=gL*minf(v=V)*(V-Vca)                    {Current through L-type channel}
+IR:=0.25*IL                                 {Current through R-type channel}
 
-JL:=alpha*IL/vmd
-JR:=alpha*IR/vcell
+JL:=alpha*IL/vmd                            {Ion flux through L-type channel}
+JR:=alpha*IR/vcell                          {Ion flux through R-type channel}
 
-Jserca := Jsercamax*Ci^2/(Kserca^2 + Ci^2)
+Jserca := Jsercamax*Ci^2/(Kserca^2 + Ci^2)  {Pumps and stores:  eq (6). Probably rewritten to avoid null denominators}
 Jpmca := Jpmcamax*Ci/(Kpmca + Ci)
 Jncx := Jncx0*(Ci - 0.25)
-L:=Jserca + Jpmca + Jncx + Jleak
+L:=Jserca + Jpmca + Jncx + Jleak            {TG: clearance from cytosol}
 
-V:=Vrest + (Vburst - Vrest)*(heav(x=rem(t, tcycle)) - heav(x=rem(t,tcycle) - toff))
+V:=Vrest + (Vburst - Vrest)*(heav(x=rem(t, tcycle)) - heav(x=rem(t,tcycle) - toff)) 
+                                            {Membrane potential, a square source}
 
 
 par Cmd_init=0.0674
 par Ci_init=0.06274
 
-diff(Cmd,t):= ts*(-fmd*JL - fmd*B*(Cmd - Ci))
-diff(Ci,t):= ts*(-fi*JR + fv*fi*B*(Cmd - Ci) - fi*L)
+diff(Cmd,t):= ts*(-fmd*JL - fmd*B*(Cmd - Ci))          {Microdomain [Ca++]}
+diff(Ci,t):= ts*(-fi*JR + fv*fi*B*(Cmd - Ci) - fi*L)   {Cytosol [Ca++]}
 
-r2:=r20*Ci/(Ci + Kp2)
-r3:=GlucFact*r30*Ci/(Ci + Kp)
+r2:=r20*Ci/(Ci + Kp2)                                  {Rates depending on cytosol calcium}
+r3:=GlucFact*r30*Ci/(Ci + Kp)                          {Rates depending on cytosol calcium and glucose}
 
 par N1_init=14.71376
 par N2_init=0.612519
@@ -85,23 +87,23 @@ par NF_init=0.003399
 par NR_init=0.50988575
 par SE_init=0.0
 
-diff(N1,t):= ts*(-(3*k1*Cmd + rm1)*N1 + km1*N2 + r1*N5)
-diff(N2,t):= ts*(3*k1*Cmd*N1 -(2*k1*Cmd + km1)*N2 + 2*km1*N3)
-diff(N3,t):= ts*(2*k1*Cmd*N2 -(2*km1 + k1*Cmd)*N3 + 3*km1*N4)
-diff(N4,t):= ts*(k1*Cmd*N3 - (3*km1 + u1)*N4)
-diff(N5,t):= ts*(rm1*N1 - (r1 + rm2)*N5 + r2*N6)
-diff(N6,t):= ts*(r3 + rm2*N5 - (rm3 + r2)*N6)
-diff(NF,t):= ts*(u1*N4 - u2*NF)
-diff(NR,t):= ts*(u2*NF - u3*NR)
+diff(N1,t):= ts*(-(3*k1*Cmd + rm1)*N1 + km1*N2 + r1*N5)        {Primed granules}
+diff(N2,t):= ts*(3*k1*Cmd*N1 -(2*k1*Cmd + km1)*N2 + 2*km1*N3)  {Bound granules}
+diff(N3,t):= ts*(2*k1*Cmd*N2 -(2*km1 + k1*Cmd)*N3 + 3*km1*N4)  {Triggered granules}
+diff(N4,t):= ts*(k1*Cmd*N3 - (3*km1 + u1)*N4)                  {Fused granules}
+diff(N5,t):= ts*(rm1*N1 - (r1 + rm2)*N5 + r2*N6)               {Primed granules}
+diff(N6,t):= ts*(r3 + rm2*N5 - (rm3 + r2)*N6)                  {Docked granules}
+diff(NF,t):= ts*(u1*N4 - u2*NF)                                {Fused granules}
+diff(NR,t):= ts*(u2*NF - u3*NR)                                {Releasing granules}
 
-diff(SE,t):= ts*(u3*NR)
+diff(SE,t):= ts*(u3*NR)                                        {Secretion}
 
 docked := N6 + N5 + N1
 primed := N5 + N1
 " > structural.xml
 
 # PharmML lacks the delay() function
-# measured:=4.5*(SE - delay(SE, tau))
+# measured:=4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg/cell/min}
 
 
 
