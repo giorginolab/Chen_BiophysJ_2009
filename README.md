@@ -132,10 +132,7 @@ developed by the [DDMoRe consortium](http://ddmore.eu/).
 The conversion occurs semi-automatically relying on the
 [infix2pharmml](http://infix2pharmml.sourceforge.net) converter. A bash
 script is used to merge the functions (which have to be converted
-separately) with the model code. The `implementedBy` XML attribute
-has been removed manually because it is rejected by the current
-PharmML repository.
-
+separately) with the model code. 
 
 
 

@@ -1,0 +1,8 @@
+# Heaviside function
+heavx(x):= (abs(x)+x)/(2*abs(x)+1e-5)
+#
+# Modulus function. PharmML 0.5 has the rem() function, which may or may not accept real-valued arguments.
+modulus(a,b):=a-b*floor(a/b)
+#
+# Saturation function
+minf(v):= 1/(1 + exp((Vm-V)/sm))
