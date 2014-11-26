@@ -27,6 +27,11 @@ $c -s "`cat structural.infix2pharmml`" > structural.xml
 # Merge the two
 sed '/<!-- Insert FunctionDefinition here -->/ r functions.xml' structural.xml > model.xml
 
+# Edit the name
+sed -i 's/Anonymous - FIXME/Chen_2009_BiophysJ_Exocytosis/' model.xml
+
+sed -i 's|Model translated by infix2pharmml.sourceforge.net|Yi-der Chen, Shaokun Wang, and Arthur Sherman, Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic &beta;-Cells by Kinetic Modeling of Granule Exocytosis. doi:10.1529/biophysj.107.124990 . Model translated by infix2pharmml.sourceforge.net|' model.xml
+
 
 # Final pp
 xml_pp -i model.xml

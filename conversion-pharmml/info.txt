@@ -10,7 +10,7 @@ conversion scripts, the latest version, and conversions into several
 other languages.
 
 Name: 
-    ChenSherman_2009_BiophysJ_Exocytosis
+    Chen_2008_BiophysJ_Exocytosis
 
 
 Description:

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PharmML writtenVersion="0.3" xmlns="http://www.pharmml.org/2013/03/PharmML" xmlns:ct="http://www.pharmml.org/2013/03/CommonTypes" xmlns:ds="http://www.pharmml.org/2013/08/Dataset" xmlns:math="http://www.pharmml.org/2013/03/Maths" xmlns:mdef="http://www.pharmml.org/2013/03/ModelDefinition" xmlns:mml="http://www.pharmml.org/2013/03/PharmML" xmlns:mstep="http://www.pharmml.org/2013/03/ModellingSteps" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pharmml.org/2013/03/PharmML http://www.pharmml.org/2013/03/PharmML">
-  <ct:Name>Anonymous - FIXME</ct:Name>
-  <ct:Description>Model translated by infix2pharmml.sourceforge.net on Tue Nov 25 17:22:26 2014.</ct:Description>
+  <ct:Name>Chen_2009_BiophysJ_Exocytosis</ct:Name>
+  <ct:Description>Yi-der Chen, Shaokun Wang, and Arthur Sherman, Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic Model translated by infix2pharmml.sourceforge.netbeta;-Cells by Kinetic Modeling of Granule Exocytosis. doi:10.1529/biophysj.107.124990 . Model translated by infix2pharmml.sourceforge.net on Wed Nov 26 10:38:31 2014.</ct:Description>
   <!-- Translation of: -->
   <!-- par Vrest=-70, Vburst=-20
 par tstep=0.0, ton=12.0, toff=12.0
