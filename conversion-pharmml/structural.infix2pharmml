@@ -60,3 +60,5 @@ diff(SE,t):= ts*(u3*NR)                                        {Secretion}
 
 docked := N6 + N5 + N1
 primed := N5 + N1
+
+measured := 4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg/cell/min}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PharmML writtenVersion="0.3" xmlns="http://www.pharmml.org/2013/03/PharmML" xmlns:ct="http://www.pharmml.org/2013/03/CommonTypes" xmlns:ds="http://www.pharmml.org/2013/08/Dataset" xmlns:math="http://www.pharmml.org/2013/03/Maths" xmlns:mdef="http://www.pharmml.org/2013/03/ModelDefinition" xmlns:mml="http://www.pharmml.org/2013/03/PharmML" xmlns:mstep="http://www.pharmml.org/2013/03/ModellingSteps" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pharmml.org/2013/03/PharmML http://www.pharmml.org/2013/03/PharmML">
   <ct:Name>Chen_2009_BiophysJ_Exocytosis</ct:Name>
-  <ct:Description>Yi-der Chen, Shaokun Wang, and Arthur Sherman, Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic Model translated by infix2pharmml.sourceforge.netbeta;-Cells by Kinetic Modeling of Granule Exocytosis. doi:10.1529/biophysj.107.124990 . Model translated by infix2pharmml.sourceforge.net on Wed Nov 26 10:38:31 2014.</ct:Description>
+  <ct:Description>Yi-der Chen, Shaokun Wang, and Arthur Sherman, Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic Model translated by infix2pharmml.sourceforge.netbeta;-Cells by Kinetic Modeling of Granule Exocytosis. doi:10.1529/biophysj.107.124990 . Model translated by infix2pharmml.sourceforge.net on Wed Nov 26 18:08:10 2014.</ct:Description>
   <!-- Translation of: -->
   <!-- par Vrest=-70, Vburst=-20
 par tstep=0.0, ton=12.0, toff=12.0
@@ -64,7 +64,9 @@ diff(NR,t):= ts*(u2*NF - u3*NR)                                {Releasing granul
 diff(SE,t):= ts*(u3*NR)                                        {Secretion}
 
 docked := N6 + N5 + N1
-primed := N5 + N1 -->
+primed := N5 + N1
+
+measured := 4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg/cell/min} -->
   <IndependentVariable symbId="t"/>
   <!-- Insert FunctionDefinition here -->
   <ct:FunctionDefinition symbId="heavx" symbolType="real">
@@ -1216,6 +1218,26 @@ primed := N5 + N1 -->
             <math:Binop op="plus">
               <ct:SymbRef symbIdRef="N5"/>
               <ct:SymbRef symbIdRef="N1"/>
+            </math:Binop>
+          </math:Equation>
+        </ct:Assign>
+      </ct:Variable>
+      <!-- measured (Variable) -->
+      <ct:Variable symbId="measured" symbolType="real">
+        <ct:Description>4.5 is for 9 pg/granule, so this gives pg/cell/min</ct:Description>
+        <ct:Assign>
+          <math:Equation>
+            <math:Binop op="times">
+              <ct:Real>4.5</ct:Real>
+              <math:Binop op="minus">
+                <ct:SymbRef symbIdRef="SE"/>
+                <ct:Delay>
+                  <ct:SymbRef symbIdRef="SE"/>
+                  <ct:DelayVariable>
+                    <ct:SymbRef blkIdRef="p" symbIdRef="tau"/>
+                  </ct:DelayVariable>
+                </ct:Delay>
+              </math:Binop>
             </math:Binop>
           </math:Equation>
         </ct:Assign>

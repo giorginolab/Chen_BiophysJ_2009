@@ -20,9 +20,6 @@ done < functions.infix2pharmml
 # Gobble the structural model and convert it
 $c -s "`cat structural.infix2pharmml`" > structural.xml
 
-# PharmML lacks the delay() function
-# measured:=4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg/cell/min}
-
 
 # Merge the two
 sed '/<!-- Insert FunctionDefinition here -->/ r functions.xml' structural.xml > model.xml
