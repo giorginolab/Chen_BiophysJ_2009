@@ -3,7 +3,8 @@ based on kinetic modeling of granule exocytosis.
 
 The generation of PharmML is performed by the infix2pharmml converter
 (http://infix2pharmml.sourceforge.net) on the basis of the source
-files `functions.i2p` and `structural.i2p` (supplied).
+files `functions.infix2pharmml` and `structural.infix2pharmml`
+(distributed along with the model).
 
 See the repository https://github.com/tonigi/Chen_BiophysJ_2009 for
 conversion scripts, the latest version, and conversions into several

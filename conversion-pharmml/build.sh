@@ -8,7 +8,7 @@ c="perl ./convert.pl"
 
 
 # Convert function definitions, one line at a time
-rm functions_tmp.xml
+echo > functions_tmp.xml
 while read line
 do
   if [[ ! ($line =~ ^#) ]]; then
@@ -25,9 +25,9 @@ $c -s "`cat structural.infix2pharmml`" > structural_tmp.xml
 sed '/<!-- Insert FunctionDefinition here -->/ r functions_tmp.xml' structural_tmp.xml > model.xml
 
 # Edit the name
-sed -i 's/Anonymous - FIXME/Chen_2009_BiophysJ_Exocytosis/' model.xml
-
-sed -i 's|Model translated by infix2pharmml.sourceforge.net|Yi-der Chen, Shaokun Wang, and Arthur Sherman, Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic &beta;-Cells by Kinetic Modeling of Granule Exocytosis. doi:10.1529/biophysj.107.124990 . Model translated by infix2pharmml.sourceforge.net|' model.xml
+sed -i -e 's|Anonymous - FIXME|Chen_2009_BiophysJ_Exocytosis|' \
+    -e 's|Model translated by infix2pharmml.sourceforge.net|Yi-der Chen, Shaokun Wang, and Arthur Sherman, Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic &beta;-Cells by Kinetic Modeling of Granule Exocytosis. doi:10.1529/biophysj.107.124990 . Model translated by infix2pharmml.sourceforge.net|' \
+    model.xml
 
 
 # Final pp
