@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PharmML writtenVersion="0.3" xmlns="http://www.pharmml.org/2013/03/PharmML" xmlns:ct="http://www.pharmml.org/2013/03/CommonTypes" xmlns:ds="http://www.pharmml.org/2013/08/Dataset" xmlns:math="http://www.pharmml.org/2013/03/Maths" xmlns:mdef="http://www.pharmml.org/2013/03/ModelDefinition" xmlns:mml="http://www.pharmml.org/2013/03/PharmML" xmlns:mstep="http://www.pharmml.org/2013/03/ModellingSteps" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pharmml.org/2013/03/PharmML http://www.pharmml.org/2013/03/PharmML">
+<PharmML implementedBy="http://infix2pharmml.sourceforge.net" writtenVersion="0.6" xmlns="http://www.pharmml.org/pharmml/0.6/PharmML" xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes" xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset" xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pharmml.org/pharmml/0.6/PharmML http://www.pharmml.org/pharmml/0.6/PharmML">
   <ct:Name>Chen_2009_BiophysJ_Exocytosis</ct:Name>
-  <ct:Description>Yi-der Chen, Shaokun Wang, and Arthur Sherman, Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic Model translated by infix2pharmml.sourceforge.netbeta;-Cells by Kinetic Modeling of Granule Exocytosis. doi:10.1529/biophysj.107.124990 . Model translated by infix2pharmml.sourceforge.net on Wed Nov 26 18:08:10 2014.</ct:Description>
-  <!-- Translation of: -->
-  <!-- par Vrest=-70, Vburst=-20
+  <ct:Description>Yi-der Chen, Shaokun Wang, and Arthur Sherman, Identifying the Targets of the Amplifying Pathway for Insulin Secretion in Pancreatic Model translated by infix2pharmml.sourceforge.netbeta;-Cells by Kinetic Modeling of Granule Exocytosis. doi:10.1529/biophysj.107.124990 . Model translated by infix2pharmml.sourceforge.net on Fri Jul  3 13:41:05 2015.</ct:Description>
+  <!-- Translation of: 
+       par Vrest=-70, Vburst=-20
 par tstep=0.0, ton=12.0, toff=12.0
 par GlucFact=1.2
 par fmd=0.01, fi=0.01, B=200, fv=0.00365
@@ -64,9 +64,7 @@ diff(NR,t):= ts*(u2*NF - u3*NR)                                {Releasing granul
 diff(SE,t):= ts*(u3*NR)                                        {Secretion}
 
 docked := N6 + N5 + N1
-primed := N5 + N1
-
-measured := 4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg/cell/min} -->
+primed := N5 + N1 -->
   <IndependentVariable symbId="t"/>
   <!-- Insert FunctionDefinition here -->
   <ct:FunctionDefinition symbId="heavx" symbolType="real">
@@ -138,113 +136,36 @@ measured := 4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg
       </math:Equation>
     </ct:Definition>
   </ct:FunctionDefinition>
-  <ModelDefinition xmlns="http://www.pharmml.org/2013/03/ModelDefinition">
+  <ModelDefinition xmlns="http://www.pharmml.org/pharmml/0.6/ModelDefinition">
     <ParameterModel blkId="p">
-      <SimpleParameter symbId="N4_init">
+      <SimpleParameter symbId="fi">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>5.098857e-6</ct:Real>
-          </math:Equation>
+          <ct:Real>0.01</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Kp2">
+      <SimpleParameter symbId="GlucFact">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>2.3</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="Ci_init">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.06274</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="u2">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>3</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="Vrest">
-        <ct:Assign>
-          <math:Equation>
-            <math:Uniop op="minus">
-              <ct:Real>70</ct:Real>
-            </math:Uniop>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="tstep">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.0</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="NF_init">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.003399</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="Kpmca">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.5</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="ts">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>60</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="N5_init">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>24.539936</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="r30">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>1.205</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="fv">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.00365</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="gL">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>250</ct:Real>
-          </math:Equation>
+          <ct:Real>1.2</ct:Real>
         </ct:Assign>
       </SimpleParameter>
       <SimpleParameter symbId="alpha">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>5.18e-15</ct:Real>
-          </math:Equation>
+          <ct:Real>5.18e-15</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Cmd_init">
+      <SimpleParameter symbId="rm3">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.0674</ct:Real>
-          </math:Equation>
+          <ct:Real>0.0001</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="sm">
+        <ct:Assign>
+          <ct:Real>5</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="N2_init">
+        <ct:Assign>
+          <ct:Real>0.612519</ct:Real>
         </ct:Assign>
       </SimpleParameter>
       <SimpleParameter symbId="Jleak">
@@ -256,132 +177,24 @@ measured := 4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg
           </math:Equation>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Kserca">
+      <SimpleParameter symbId="B">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.27</ct:Real>
-          </math:Equation>
+          <ct:Real>200</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Jpmcamax">
+      <SimpleParameter symbId="r30">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>21.0</ct:Real>
-          </math:Equation>
+          <ct:Real>1.205</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Vburst">
+      <SimpleParameter symbId="tstep">
         <ct:Assign>
-          <math:Equation>
-            <math:Uniop op="minus">
-              <ct:Real>20</ct:Real>
-            </math:Uniop>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="vcell">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>1.15e-12</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="vmd">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>4.2e-15</ct:Real>
-          </math:Equation>
+          <ct:Real>0.0</ct:Real>
         </ct:Assign>
       </SimpleParameter>
       <SimpleParameter symbId="ton">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>12.0</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="k1">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>20</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="N3_init">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.0084499</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="tau">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>2.0</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="GlucFact">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>1.2</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="km1">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>100</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="SE_init">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.0</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="fmd">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.01</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="r1">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.6</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="r20">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.006</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="B">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>200</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="u1">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>2000</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="fi">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.01</ct:Real>
-          </math:Equation>
+          <ct:Real>12.0</ct:Real>
         </ct:Assign>
       </SimpleParameter>
       <SimpleParameter symbId="Vm">
@@ -393,11 +206,53 @@ measured := 4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg
           </math:Equation>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Vca">
+      <SimpleParameter symbId="u2">
+        <ct:Assign>
+          <ct:Real>3</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Vburst">
         <ct:Assign>
           <math:Equation>
-            <ct:Real>25</ct:Real>
+            <math:Uniop op="minus">
+              <ct:Real>20</ct:Real>
+            </math:Uniop>
           </math:Equation>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Kp">
+        <ct:Assign>
+          <ct:Real>2.3</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="r20">
+        <ct:Assign>
+          <ct:Real>0.006</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="vcell">
+        <ct:Assign>
+          <ct:Real>1.15e-12</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="k1">
+        <ct:Assign>
+          <ct:Real>20</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Vca">
+        <ct:Assign>
+          <ct:Real>25</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Jncx0">
+        <ct:Assign>
+          <ct:Real>18.67</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="vmd">
+        <ct:Assign>
+          <ct:Real>4.2e-15</ct:Real>
         </ct:Assign>
       </SimpleParameter>
       <SimpleParameter symbId="tcycle">
@@ -410,94 +265,147 @@ measured := 4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg
           </math:Equation>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Jsercamax">
+      <SimpleParameter symbId="ts">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>41.0</ct:Real>
-          </math:Equation>
+          <ct:Real>60</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Jncx0">
+      <SimpleParameter symbId="N5_init">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>18.67</ct:Real>
-          </math:Equation>
+          <ct:Real>24.539936</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="N6_init">
+      <SimpleParameter symbId="fmd">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>218.017777</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="rm2">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.001</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="u3">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.02</ct:Real>
-          </math:Equation>
-        </ct:Assign>
-      </SimpleParameter>
-      <SimpleParameter symbId="rm3">
-        <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.0001</ct:Real>
-          </math:Equation>
+          <ct:Real>0.01</ct:Real>
         </ct:Assign>
       </SimpleParameter>
       <SimpleParameter symbId="toff">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>12.0</ct:Real>
-          </math:Equation>
+          <ct:Real>12.0</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="N2_init">
+      <SimpleParameter symbId="km1">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.612519</ct:Real>
-          </math:Equation>
+          <ct:Real>100</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="Kp">
+      <SimpleParameter symbId="N3_init">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>2.3</ct:Real>
-          </math:Equation>
+          <ct:Real>0.0084499</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="sm">
+      <SimpleParameter symbId="rm2">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>5</ct:Real>
-          </math:Equation>
+          <ct:Real>0.001</ct:Real>
         </ct:Assign>
       </SimpleParameter>
-      <SimpleParameter symbId="NR_init">
+      <SimpleParameter symbId="r1">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>0.50988575</ct:Real>
-          </math:Equation>
+          <ct:Real>0.6</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="SE_init">
+        <ct:Assign>
+          <ct:Real>0.0</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Kpmca">
+        <ct:Assign>
+          <ct:Real>0.5</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="gL">
+        <ct:Assign>
+          <ct:Real>250</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Jpmcamax">
+        <ct:Assign>
+          <ct:Real>21.0</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Ci_init">
+        <ct:Assign>
+          <ct:Real>0.06274</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="u3">
+        <ct:Assign>
+          <ct:Real>0.02</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Kp2">
+        <ct:Assign>
+          <ct:Real>2.3</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="N6_init">
+        <ct:Assign>
+          <ct:Real>218.017777</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="fv">
+        <ct:Assign>
+          <ct:Real>0.00365</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="u1">
+        <ct:Assign>
+          <ct:Real>2000</ct:Real>
         </ct:Assign>
       </SimpleParameter>
       <SimpleParameter symbId="rm1">
         <ct:Assign>
-          <math:Equation>
-            <ct:Real>1</ct:Real>
-          </math:Equation>
+          <ct:Real>1</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="NF_init">
+        <ct:Assign>
+          <ct:Real>0.003399</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Jsercamax">
+        <ct:Assign>
+          <ct:Real>41.0</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="N4_init">
+        <ct:Assign>
+          <ct:Real>5.098857e-6</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="tau">
+        <ct:Assign>
+          <ct:Real>2.0</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="NR_init">
+        <ct:Assign>
+          <ct:Real>0.50988575</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Cmd_init">
+        <ct:Assign>
+          <ct:Real>0.0674</ct:Real>
         </ct:Assign>
       </SimpleParameter>
       <SimpleParameter symbId="N1_init">
         <ct:Assign>
+          <ct:Real>14.71376</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Kserca">
+        <ct:Assign>
+          <ct:Real>0.27</ct:Real>
+        </ct:Assign>
+      </SimpleParameter>
+      <SimpleParameter symbId="Vrest">
+        <ct:Assign>
           <math:Equation>
-            <ct:Real>14.71376</ct:Real>
+            <math:Uniop op="minus">
+              <ct:Real>70</ct:Real>
+            </math:Uniop>
           </math:Equation>
         </ct:Assign>
       </SimpleParameter>
@@ -1218,26 +1126,6 @@ measured := 4.5*(SE - delay(SE, tau)) {4.5 is for 9 pg/granule, so this gives pg
             <math:Binop op="plus">
               <ct:SymbRef symbIdRef="N5"/>
               <ct:SymbRef symbIdRef="N1"/>
-            </math:Binop>
-          </math:Equation>
-        </ct:Assign>
-      </ct:Variable>
-      <!-- measured (Variable) -->
-      <ct:Variable symbId="measured" symbolType="real">
-        <ct:Description>4.5 is for 9 pg/granule, so this gives pg/cell/min</ct:Description>
-        <ct:Assign>
-          <math:Equation>
-            <math:Binop op="times">
-              <ct:Real>4.5</ct:Real>
-              <math:Binop op="minus">
-                <ct:SymbRef symbIdRef="SE"/>
-                <ct:Delay>
-                  <ct:SymbRef symbIdRef="SE"/>
-                  <ct:DelayVariable>
-                    <ct:SymbRef blkIdRef="p" symbIdRef="tau"/>
-                  </ct:DelayVariable>
-                </ct:Delay>
-              </math:Binop>
             </math:Binop>
           </math:Equation>
         </ct:Assign>

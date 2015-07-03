@@ -4,25 +4,25 @@
 # directly off the original XPP version.
 
 # Location of the http://infix2pharmml.sourceforge.net driver program.
-c="perl ./convert.pl -q"
+c="perl ./convert.pl"
 
 
 # Convert function definitions, one line at a time
-rm functions.xml
+rm functions_tmp.xml
 while read line
 do
   if [[ ! ($line =~ ^#) ]]; then
-      $c "$line" >> functions.xml
+      $c "$line" >> functions_tmp.xml
   fi
 done < functions.infix2pharmml
 
 
 # Gobble the structural model and convert it
-$c -s "`cat structural.infix2pharmml`" > structural.xml
+$c -s "`cat structural.infix2pharmml`" > structural_tmp.xml
 
 
 # Merge the two
-sed '/<!-- Insert FunctionDefinition here -->/ r functions.xml' structural.xml > model.xml
+sed '/<!-- Insert FunctionDefinition here -->/ r functions_tmp.xml' structural_tmp.xml > model.xml
 
 # Edit the name
 sed -i 's/Anonymous - FIXME/Chen_2009_BiophysJ_Exocytosis/' model.xml
