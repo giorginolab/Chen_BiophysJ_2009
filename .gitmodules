@@ -1,0 +1,3 @@
+[submodule "conversion-pharmml/infix2pharmml-code"]
+	path = conversion-pharmml/infix2pharmml-code
+	url = https://git.code.sf.net/p/infix2pharmml/code
